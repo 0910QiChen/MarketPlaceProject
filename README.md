@@ -5,4 +5,4 @@
 4. User Signup Method
 5. Product Search Method
 6. Filter Search Method
-7. Signout Method
+7. Logout Method
