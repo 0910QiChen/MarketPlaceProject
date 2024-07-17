@@ -3,6 +3,7 @@
 2. Using Onion Architecture Design Pattern
 3. User Login Method
 4. User Signup Method
-5. Product Search Method
-6. Filter Search Method
-7. Logout Method
+5. Edit User Information Method
+6. Product Search Method
+7. Filter Search Method
+8. Logout Method
