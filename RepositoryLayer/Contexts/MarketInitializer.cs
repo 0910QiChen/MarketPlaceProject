@@ -8,38 +8,150 @@ namespace RepositoryLayer.Contexts
     {
         protected override void Seed(MarketContext _context)
         {
+            var categories = new List<Categories>
+            {
+                new Categories { },
+                new Categories { },
+                new Categories { },
+                new Categories { },
+            };
+            categories.ForEach(c => _context.Categories.Add(c));
+            _context.SaveChanges();
+
+            var subCategories = new List<SubCategories>
+            {
+                new SubCategories { },
+                new SubCategories { },
+                new SubCategories { },
+                new SubCategories { },
+                new SubCategories { },
+                new SubCategories { },
+                new SubCategories { },
+                new SubCategories { },
+                new SubCategories { },
+                new SubCategories { },
+                new SubCategories { },
+            };
+            subCategories.ForEach(sc => _context.SubCategories.Add(sc));
+            _context.SaveChanges();
+
             var products = new List<Products>
             {
-                new Products{ ProductName = "", SubCategory = "", Category = "", ModelName = "", ModelYear = 2000 },
-                new Products{ ProductName = "", SubCategory = "", Category = "", ModelName = "", ModelYear = 2000 },
-                new Products{ ProductName = "", SubCategory = "", Category = "", ModelName = "", ModelYear = 2001 },
-                new Products{ ProductName = "", SubCategory = "", Category = "", ModelName = "", ModelYear = 2001 },
-                new Products{ ProductName = "", SubCategory = "", Category = "", ModelName = "", ModelYear = 2002 },
-                new Products{ ProductName = "", SubCategory = "", Category = "", ModelName = "", ModelYear = 2002 },
-                new Products{ ProductName = "", SubCategory = "", Category = "", ModelName = "", ModelYear = 2003 },
-                new Products{ ProductName = "", SubCategory = "", Category = "", ModelName = "", ModelYear = 2003 },
-                new Products{ ProductName = "", SubCategory = "", Category = "", ModelName = "", ModelYear = 2004 },
-                new Products{ ProductName = "", SubCategory = "", Category = "", ModelName = "", ModelYear = 2004 },
-                new Products{ ProductName = "", SubCategory = "", Category = "", ModelName = "", ModelYear = 2005 },
-                new Products{ ProductName = "", SubCategory = "", Category = "", ModelName = "", ModelYear = 2005 },
-                new Products{ ProductName = "", SubCategory = "", Category = "", ModelName = "", ModelYear = 2006 },
-                new Products{ ProductName = "", SubCategory = "", Category = "", ModelName = "", ModelYear = 2006 },
-                new Products{ ProductName = "", SubCategory = "", Category = "", ModelName = "", ModelYear = 2007 },
-                new Products{ ProductName = "", SubCategory = "", Category = "", ModelName = "", ModelYear = 2007 },
-                new Products{ ProductName = "", SubCategory = "", Category = "", ModelName = "", ModelYear = 2008 },
-                new Products{ ProductName = "", SubCategory = "", Category = "", ModelName = "", ModelYear = 2008 },
-                new Products{ ProductName = "", SubCategory = "", Category = "", ModelName = "", ModelYear = 2009 },
-                new Products{ ProductName = "", SubCategory = "", Category = "", ModelName = "", ModelYear = 2009 },
-                new Products{ ProductName = "", SubCategory = "", Category = "", ModelName = "", ModelYear = 2010 },
-                new Products{ ProductName = "", SubCategory = "", Category = "", ModelName = "", ModelYear = 2010 },
-                new Products{ ProductName = "", SubCategory = "", Category = "", ModelName = "", ModelYear = 2011 },
-                new Products{ ProductName = "", SubCategory = "", Category = "", ModelName = "", ModelYear = 2011 },
-                new Products{ ProductName = "", SubCategory = "", Category = "", ModelName = "", ModelYear = 2012 },
-                new Products{ ProductName = "", SubCategory = "", Category = "", ModelName = "", ModelYear = 2012 },
-                new Products{ ProductName = "", SubCategory = "", Category = "", ModelName = "", ModelYear = 2013 },
-                new Products{ ProductName = "", SubCategory = "", Category = "", ModelName = "", ModelYear = 2013 },
+                new Products{ },
+                new Products{ },
+                new Products{ },
+                new Products{ },
+                new Products{ },
+                new Products{ },
+                new Products{ },
+                new Products{ },
+                new Products{ },
+                new Products{ },
+                new Products{ },
+                new Products{ },
+                new Products{ },
+                new Products{ },
+                new Products{ },
+                new Products{ },
+                new Products{ },
+                new Products{ },
+                new Products{ },
+                new Products{ },
+                new Products{ },
+                new Products{ },
+                new Products{ },
+                new Products{ },
+                new Products{ },
+                new Products{ },
+                new Products{ },
+                new Products{ },
             };
             products.ForEach(p => _context.Products.Add(p));
+            _context.SaveChanges();
+
+            var attributes = new List<Attributes>
+            {
+                new Attributes{ },
+                new Attributes{ },
+                new Attributes{ },
+                new Attributes{ },
+                new Attributes{ },
+                new Attributes{ },
+                new Attributes{ },
+                new Attributes{ },
+                new Attributes{ },
+                new Attributes{ },
+                new Attributes{ },
+                new Attributes{ },
+                new Attributes{ },
+                new Attributes{ },
+                new Attributes{ },
+                new Attributes{ },
+                new Attributes{ },
+                new Attributes{ },
+                new Attributes{ },
+                new Attributes{ },
+                new Attributes{ },
+                new Attributes{ },
+                new Attributes{ },
+                new Attributes{ },
+                new Attributes{ },
+                new Attributes{ },
+                new Attributes{ },
+                new Attributes{ },
+                new Attributes{ },
+                new Attributes{ },
+                new Attributes{ },
+                new Attributes{ },
+                new Attributes{ },
+            };
+            attributes.ForEach(a => _context.Attributes.Add(a));
+            _context.SaveChanges();
+
+            var details = new List<AttributeDetails>
+            {
+                new AttributeDetails{ },
+                new AttributeDetails{ },
+                new AttributeDetails{ },
+                new AttributeDetails{ },
+                new AttributeDetails{ },
+                new AttributeDetails{ },
+                new AttributeDetails{ },
+                new AttributeDetails{ },
+                new AttributeDetails{ },
+                new AttributeDetails{ },
+                new AttributeDetails{ },
+                new AttributeDetails{ },
+                new AttributeDetails{ },
+                new AttributeDetails{ },
+                new AttributeDetails{ },
+                new AttributeDetails{ },
+                new AttributeDetails{ },
+                new AttributeDetails{ },
+                new AttributeDetails{ },
+                new AttributeDetails{ },
+                new AttributeDetails{ },
+                new AttributeDetails{ },
+                new AttributeDetails{ },
+                new AttributeDetails{ },
+                new AttributeDetails{ },
+                new AttributeDetails{ },
+                new AttributeDetails{ },
+                new AttributeDetails{ },
+                new AttributeDetails{ },
+                new AttributeDetails{ },
+                new AttributeDetails{ },
+                new AttributeDetails{ },
+                new AttributeDetails{ },
+                new AttributeDetails{ },
+                new AttributeDetails{ },
+                new AttributeDetails{ },
+                new AttributeDetails{ },
+                new AttributeDetails{ },
+                new AttributeDetails{ },
+                new AttributeDetails{ },
+            };
+            details.ForEach(d => _context.AttributeDetails.Add(d));
             _context.SaveChanges();
         }
     }
