@@ -54,7 +54,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DomainModels\AttributeDetails.cs" />
+    <Compile Include="DomainModels\Attributes.cs" />
+    <Compile Include="DomainModels\Categories.cs" />
     <Compile Include="DomainModels\Products.cs" />
+    <Compile Include="DomainModels\SubCategories.cs" />
     <Compile Include="DomainModels\Users.cs" />
     <Compile Include="Interfaces\IGenericRepo.cs" />
     <Compile Include="Interfaces\IProductRepo.cs" />

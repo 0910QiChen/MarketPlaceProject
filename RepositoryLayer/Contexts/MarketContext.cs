@@ -11,7 +11,11 @@ namespace RepositoryLayer.Contexts
         }
 
         public DbSet<Users> Users { get; set; }
+        public DbSet<Categories> Categories { get; set; }
+        public DbSet<SubCategories> SubCategories { get; set; }
         public DbSet<Products> Products { get; set; }
+        public DbSet<Attributes> Attributes { get; set; }
+        public DbSet<AttributeDetails> AttributeDetails { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

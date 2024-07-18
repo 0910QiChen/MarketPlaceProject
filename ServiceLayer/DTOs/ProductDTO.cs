@@ -11,9 +11,6 @@ namespace ServiceLayer.DTOs
     {
         public int ProductID { get; set; }
         public string ProductName { get; set; }
-        public string SubCategory { get; set; }
-        public string Category { get; set; }
-        public string ModelName { get; set; }
-        public int ModelYear { get; set; }
+        public int SubCategoryID { get; set; }
     }
 }
