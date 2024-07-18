@@ -1,24 +1,28 @@
 ﻿using DomainLayer.Interfaces;
 using RepositoryLayer.Contexts;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace RepositoryLayer.Repositories
 {
     public class UnitOfWork : IUnitOfWork
     {
         private readonly MarketContext _context;
-        public IProductRepo ProductRepo { get; }
-
         public IUserRepo UserRepo { get; }
+        public IProductRepo ProductRepo { get; }
+        public ICategoryRepo CategoryRepo {  get; }
+        public ISubCateRepo SubCateRepo { get; }
+        public IAttributeRepo AttributeRepo { get; }
+        public IADRepo ADRepo { get; }
 
         public UnitOfWork(MarketContext context)
         {
             _context = context;
+            UserRepo = new UserRepo(_context);
             ProductRepo = new ProductRepo(_context);
+            CategoryRepo = new CategoryRepo(_context);
+            SubCateRepo = new SubCateRepo(_context);
+            AttributeRepo = new AttributeRepo(_context);
+            ADRepo = new ADRepo(_context);
         }
 
         public void commit()

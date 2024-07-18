@@ -1,16 +1,15 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DomainLayer.Interfaces
 {
     public interface IUnitOfWork : IDisposable
     {
-        IProductRepo ProductRepo { get; }
-
         IUserRepo UserRepo { get; }
+        IProductRepo ProductRepo { get; }
+        ICategoryRepo CategoryRepo { get; }
+        ISubCateRepo SubCateRepo { get; }
+        IAttributeRepo AttributeRepo { get; }
+        IADRepo ADRepo { get; }
         void commit();
     }
 }

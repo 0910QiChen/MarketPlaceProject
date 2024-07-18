@@ -60,8 +60,12 @@
     <Compile Include="DomainModels\Products.cs" />
     <Compile Include="DomainModels\SubCategories.cs" />
     <Compile Include="DomainModels\Users.cs" />
+    <Compile Include="Interfaces\IADRepo.cs" />
+    <Compile Include="Interfaces\IAttributeRepo.cs" />
+    <Compile Include="Interfaces\ICategoryRepo.cs" />
     <Compile Include="Interfaces\IGenericRepo.cs" />
     <Compile Include="Interfaces\IProductRepo.cs" />
+    <Compile Include="Interfaces\ISubCateRepo.cs" />
     <Compile Include="Interfaces\IUnitOfWork.cs" />
     <Compile Include="Interfaces\IUserRepo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

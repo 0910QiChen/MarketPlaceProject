@@ -57,8 +57,12 @@
     <Compile Include="Contexts\MarketContext.cs" />
     <Compile Include="Contexts\MarketInitializer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\ADRepo.cs" />
+    <Compile Include="Repositories\AttributeRepo.cs" />
+    <Compile Include="Repositories\CategoryRepo.cs" />
     <Compile Include="Repositories\GenericRepo.cs" />
     <Compile Include="Repositories\ProductRepo.cs" />
+    <Compile Include="Repositories\SubCateRepo.cs" />
     <Compile Include="Repositories\UnitOfWork.cs" />
     <Compile Include="Repositories\UserRepo.cs" />
   </ItemGroup>
