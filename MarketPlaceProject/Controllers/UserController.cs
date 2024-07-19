@@ -11,22 +11,22 @@ namespace MarketPlaceProject.Controllers
     public class UserController : Controller
     {
         public IUserService userService;
-        private Mapper DTOMapper;
+        private Mapper userMapper;
 
         public UserController()
         {
             userService = new UserService();
-            var DTOConfig = new MapperConfiguration(cfg =>
+            var UserConfig = new MapperConfiguration(cfg =>
             {
                 cfg.CreateMap<UserDTO, UserVM>();
                 cfg.CreateMap<UserVM, UserDTO>();
             });
-            DTOMapper = new Mapper(DTOConfig);
+            userMapper = new Mapper(UserConfig);
         }
 
         public ActionResult UserList()
         {
-            var users = DTOMapper.Map<List<UserVM>>(userService.GetAllUsers());
+            var users = userMapper.Map<List<UserVM>>(userService.GetAllUsers());
             return View(users);
         }
 
@@ -41,7 +41,7 @@ namespace MarketPlaceProject.Controllers
         {
             if (ModelState.IsValid)
             {
-                var userDTO = DTOMapper.Map<UserDTO>(userVM);
+                var userDTO = userMapper.Map<UserDTO>(userVM);
                 userService.CreateUser(userDTO);
                 return RedirectToAction("UserList");
             }
