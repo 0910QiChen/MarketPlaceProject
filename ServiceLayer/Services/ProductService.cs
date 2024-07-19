@@ -27,28 +27,19 @@ namespace ServiceLayer.Services
 
             var config = new MapperConfiguration(cfg =>
             {
+                cfg.CreateMap<Categories, CategoryDTO>();
+                cfg.CreateMap<SubCategories, SubCategoryDTO>();
                 cfg.CreateMap<Products, ProductDTO>();
+                cfg.CreateMap<Attributes, AttributeDTO>();
+                cfg.CreateMap<AttributeDetails, ADDTO>();
             });
             mapper = new Mapper(config);
         }
 
-        public IEnumerable<ProductDTO> GetProducts(string subcategory, string category)
+        public IEnumerable<ProductDTO> GetAllProducts()
         {
             var products = mapper.Map<List<ProductDTO>>(_unitOfWork.ProductRepo.GetAll());
-            if (category == null)
-            {
-                return products;
-            }
-            else if(subcategory == null)
-            {
-                var productWithoutSubCategory = products.Where(p => p.Category == category);
-                return productWithoutSubCategory;
-            }
-            else
-            {
-                var productWithSubCategory = products.Where(p => p.SubCategory == subcategory);
-                return productWithSubCategory;
-            }
+            return products;
         }
     }
 }

@@ -1,10 +1,12 @@
 ﻿using ServiceLayer.DTOs;
+using System.Collections.Generic;
 
 namespace ServiceLayer.Interfaces
 {
     public interface IUserService
     {
-        void createUser(UserDTO userDTO);
-        void editUser(UserDTO userDTO);
+        IEnumerable<UserDTO> GetAllUsers();
+        void CreateUser(UserDTO userDTO);
+        void EditUser(UserDTO userDTO);
     }
 }

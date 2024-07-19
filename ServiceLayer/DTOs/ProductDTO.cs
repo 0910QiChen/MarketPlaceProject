@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace ServiceLayer.DTOs
 {
@@ -12,5 +7,7 @@ namespace ServiceLayer.DTOs
         public int ProductID { get; set; }
         public string ProductName { get; set; }
         public int SubCategoryID { get; set; }
+        public SubCategoryDTO SubCategory { get; set; }
+        public virtual ICollection<ADDTO> AttributeDetails { get; set; }
     }
 }

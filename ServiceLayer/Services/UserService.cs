@@ -5,6 +5,7 @@ using ServiceLayer.DTOs;
 using ServiceLayer.Interfaces;
 using AutoMapper;
 using DomainLayer.DomainModels;
+using System.Collections.Generic;
 
 namespace ServiceLayer.Services
 {
@@ -28,14 +29,20 @@ namespace ServiceLayer.Services
             mapper = new Mapper(config);
         }
 
-        public void createUser(UserDTO userDTO)
+        public IEnumerable<UserDTO> GetAllUsers()
+        {
+            var userDTO = mapper.Map<List<UserDTO>>(_unitOfWork.UserRepo.GetAll());
+            return userDTO;
+        }
+
+        public void CreateUser(UserDTO userDTO)
         {
             var user = mapper.Map<Users>(userDTO);
             _unitOfWork.UserRepo.Insert(user);
             _unitOfWork.commit();
         }
 
-        public void editUser(UserDTO userDTO)
+        public void EditUser(UserDTO userDTO)
         {
             var user = mapper.Map<Users>(userDTO);
             if (user != null)

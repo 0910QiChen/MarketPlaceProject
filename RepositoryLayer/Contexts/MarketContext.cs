@@ -20,6 +20,36 @@ namespace RepositoryLayer.Contexts
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Conventions.Remove<PluralizingEntitySetNameConvention>();
+
+            modelBuilder.Entity<SubCategories>()
+                .HasRequired(sc => sc.Category)
+                .WithMany(c => c.SubCategories)
+                .HasForeignKey(sc => sc.CategoryID)
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<Products>()
+                .HasRequired(p => p.SubCategory)
+                .WithMany(sc => sc.Products)
+                .HasForeignKey(p => p.SubCategoryID)
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<Attributes>()
+                .HasRequired(a => a.SubCategory)
+                .WithMany(sc => sc.Attributes)
+                .HasForeignKey(a => a.SubCategoryID)
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<AttributeDetails>()
+                .HasRequired(ad => ad.Attribute)
+                .WithMany(a => a.AttributeDetails)
+                .HasForeignKey(ad => ad.AttributeID)
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<AttributeDetails>()
+                .HasRequired(ad => ad.Product)
+                .WithMany(p => p.AttributeDetails)
+                .HasForeignKey(ad => ad.ProductID)
+                .WillCascadeOnDelete(false);
         }
     }
 }

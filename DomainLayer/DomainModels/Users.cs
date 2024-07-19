@@ -9,7 +9,7 @@ namespace DomainLayer.DomainModels
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int UserID { get; set; }
         [Required]
-        public string UserName { get; set; }
+        public string Username { get; set; }
         [Required]
         public string Email { get; set; }
         [Required]

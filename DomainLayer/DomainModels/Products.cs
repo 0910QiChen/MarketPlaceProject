@@ -11,7 +11,6 @@ namespace DomainLayer.DomainModels
         public int ProductID { get; set; }
         [Required]
         public string ProductName { get; set; }
-        [Required]
         public int SubCategoryID { get; set; }
         public SubCategories SubCategory { get; set; }
         public virtual ICollection<AttributeDetails> AttributeDetails { get; set; }
