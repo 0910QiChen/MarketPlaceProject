@@ -5,13 +5,14 @@ using ServiceLayer.Interfaces;
 using ServiceLayer.Services;
 using System.Collections.Generic;
 using System.Web.Mvc;
+using System.Linq;
 
 namespace MarketPlaceProject.Controllers
 {
     public class ProductController : Controller
     {
         public IProductService productService;
-        private Mapper productMapper;
+        private readonly Mapper productMapper;
 
         public ProductController()
         {
@@ -32,10 +33,12 @@ namespace MarketPlaceProject.Controllers
             return View(categories);
         }
 
-        public ActionResult SubCategoryList()
+        public ActionResult GetCategory(int categoryID)
         {
-            var subcategories = productMapper.Map<List<SubCategoryVM>>(productService.GetSubCategories());
-            return View(subcategories);
+            var category = productMapper.Map<CategoryVM>(productService.GetCategory(categoryID));
+            var subCategories = category.SubCategories;
+            var names = subCategories.Select(n => n.SubCategoryName).ToList();
+            return Json(names, JsonRequestBehavior.AllowGet);
         }
     }
 }

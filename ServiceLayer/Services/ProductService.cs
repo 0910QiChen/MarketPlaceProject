@@ -11,11 +11,11 @@ namespace ServiceLayer.Services
 {
     public class ProductService : IProductService
     {
-        MarketContext _context = new MarketContext();
+        private readonly MarketContext _context = new MarketContext();
 
         private readonly IUnitOfWork _unitOfWork;
 
-        private Mapper mapper;
+        private readonly Mapper mapper;
 
         public ProductService()
         {

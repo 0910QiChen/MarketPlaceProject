@@ -4,21 +4,72 @@
     ViewBag.Title = "CategoryList";
 }
 
-<h2>CategoryList</h2>
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.3/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.3/jquery-ui.js"></script>
+</head>
 
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.CategoryName)
-        </th>
-    </tr>
+<body>
+    <h2>CategoryList</h2>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.CategoryName)
-        </td>
-    </tr>
-}
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.CategoryName)
+            </th>
+        </tr>
 
-</table>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CategoryName)
+                </td>
+            </tr>
+        }
+
+    </table>
+
+    <div>
+        <label for="categorySelect">Select Category:</label>
+        <select id="categorySelect" name="categorySelect">
+            @foreach (var category in Model)
+            {
+                <option value="@category.CategoryID">@category.CategoryName</option>
+            }
+        </select>
+    </div>
+
+    <input id="subs" name="SubCategories" />
+
+    <script>
+    var availableSubs = [];
+    $(function () {
+        $('#categorySelect').change(function () {
+            var categoryID = $(this).val();
+            $.ajax({
+                url: '@Url.Action("GetCategory", "Product")',
+                data: { categoryID: categoryID },
+
+                success: function (data) {
+                    console.log(data);
+                    console.log(typeof $.fn.autocomplete);
+                    availableSubs = data;
+                    $("#subs").autocomplete({
+                        source: availableSubs
+                    });
+                    $("#subs").autocomplete("enable");
+                },
+                error: function (xhr, status, error) {
+                    console.error("An error occurred: " + status + " - " + error);
+                }
+            });
+        });
+        $('#categorySelect').trigger('change');
+    });
+    </script>
+</body>
+</html>
