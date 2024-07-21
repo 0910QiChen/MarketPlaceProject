@@ -1,0 +1,99 @@
+﻿/* General Container */
+.login-container {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    margin-top: 100px; /* Adjust as needed */
+}
+
+/* Logo */
+.login-logo {
+    width: 100px; /* Adjust size as needed */
+    margin: 0 auto 20px;
+}
+
+/* Form Heading */
+.login-container h2 {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+/* Form Group */
+.form-group1 {
+    margin-bottom: 20px;
+    position: relative;
+}
+
+/* Control Label */
+.control-label {
+    display: none; /* Hide labels as they're not shown in the example */
+}
+
+/* Form Control */
+.form-control {
+    width: 100%;
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding-left: 40px; /* Space for icons */
+}
+
+/* Input Icons */
+.form-group1 i {
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 20px;
+    color: #888;
+}
+
+/* Submit Button */
+.btn-primary {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    color: #fff;
+    background-color: #007bff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+    .btn-primary:hover {
+        background-color: #0056b3;
+    }
+
+/* Error Messages */
+.alert-danger {
+    padding: 10px;
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.text-danger {
+    color: #dc3545;
+}
+
+/* Sign-Up Button */
+.sign-up-button {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    color: #007bff;
+    text-decoration: none;
+}
+
+    .sign-up-button:hover {
+        text-decoration: underline;
+    }

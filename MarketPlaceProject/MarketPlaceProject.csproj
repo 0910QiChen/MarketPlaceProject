@@ -139,6 +139,7 @@
     <Compile Include="ViewModels\ADVM.cs" />
     <Compile Include="ViewModels\AttributeVM.cs" />
     <Compile Include="ViewModels\CategoryVM.cs" />
+    <Compile Include="ViewModels\LoginViewModel.cs" />
     <Compile Include="ViewModels\ProductVM.cs" />
     <Compile Include="ViewModels\SubCategoryVM.cs" />
     <Compile Include="ViewModels\UserVM.cs" />
@@ -160,6 +161,9 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\bootstrap.rtl.css" />
     <Content Include="Content\bootstrap.rtl.min.css" />
+    <Content Include="Content\icons\login.png" />
+    <Content Include="Content\icons\search.png" />
+    <Content Include="Content\login.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
@@ -196,6 +200,7 @@
     <Content Include="Views\User\UserList.cshtml" />
     <Content Include="Views\User\Signup.cshtml" />
     <Content Include="Views\Product\SearchPage.cshtml" />
+    <Content Include="Views\User\Login.cshtml" />
     <Content Include="Views\Product\CompareProducts.cshtml" />
   </ItemGroup>
   <ItemGroup>
