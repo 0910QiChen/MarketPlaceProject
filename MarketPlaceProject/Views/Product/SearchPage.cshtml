@@ -15,16 +15,75 @@
     <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
     <script src="https://code.jquery.com/ui/1.13.3/jquery-ui.js"></script>
     <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f8ff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        h2 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .search-container {
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 4px;
+        }
+
+        #categorySelect {
+            padding: 5px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            margin-right: 10px;
+        }
+
+        #subs {
+            padding: 5px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            width: 200px;
+            margin-right: 10px;
+        }
+
+        #searchButton {
+            padding: 5px 10px;
+            border: none;
+            background-color: #007bff;
+            color: white;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+            #searchButton:hover {
+                background-color: #0056b3;
+            }
+
         .product-table {
             display: flex;
             flex-wrap: wrap;
+            justify-content: center;
+            max-width: 1200px;
         }
 
         .product-column {
             border: 1px solid #ccc;
             margin: 10px;
-            padding: 10px;
+            padding: 20px;
             width: 300px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
         }
 
             .product-column h3 {
@@ -40,25 +99,30 @@
         .attribute-name {
             font-weight: bold;
         }
+
+        .no-products {
+            text-align: center;
+            font-size: 18px;
+            color: #999;
+        }
     </style>
 </head>
 
 <body>
     <h2>Search Page</h2>
 
-    <div>
-        <label for="categorySelect">Select Category:</label>
+    <div class="search-container">
+        <label for="categorySelect">Category:</label>
         <select id="categorySelect" name="categorySelect">
             @foreach (var category in Model)
             {
                 <option value="@category.CategoryID">@category.CategoryName</option>
             }
         </select>
-    </div>
-
-    <div>
-        <input id="subs" name="SubCategories" />
-        <button id="searchButton">Search</button>
+        <input id="subs" name="SubCategories" placeholder="Search..." />
+        <button id="searchButton">
+            <img src="~/Content/icons/search.png" alt="Search" style="width: 20px; height: 20px; vertical-align: middle;" />
+        </button>
     </div>
 
     <div id="productList" class="product-table"></div>
@@ -113,7 +177,7 @@
                                     productList.append(productColumn);
                                 });
                             } else {
-                                productList.append($("<p>").text("No products found."));
+                                productList.append($("<p>").addClass("no-products").text("No products found."));
                             }
                         }
                     });
