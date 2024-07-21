@@ -14,6 +14,33 @@
     <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.3/themes/base/jquery-ui.css">
     <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
     <script src="https://code.jquery.com/ui/1.13.3/jquery-ui.js"></script>
+    <style>
+        .product-table {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .product-column {
+            border: 1px solid #ccc;
+            margin: 10px;
+            padding: 10px;
+            width: 300px;
+        }
+
+            .product-column h3 {
+                margin-top: 0;
+            }
+
+        .attribute-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 5px;
+        }
+
+        .attribute-name {
+            font-weight: bold;
+        }
+    </style>
 </head>
 
 <body>
@@ -29,26 +56,70 @@
         </select>
     </div>
 
-    <input id="subs" name="SubCategories" />
+    <div>
+        <input id="subs" name="SubCategories" />
+        <button id="searchButton">Search</button>
+    </div>
+
+    <div id="productList" class="product-table"></div>
 
     <script>
-    var availableSubs = [];
-    $(function () {
-        $('#categorySelect').change(function () {
-            var categoryID = $(this).val();
-            $.ajax({
-                url: '@Url.Action("GetCategory", "Product")',
-                data: { categoryID: categoryID },
-                success: function (data) {
-                    availableSubs = data;
-                    $("#subs").autocomplete({
-                        source: availableSubs
+        var availableSubs = [];
+        var subCategoryMap = {};
+        $(function () {
+            $('#categorySelect').change(function () {
+                availableSubs = [];
+                var categoryID = $(this).val();
+                $.ajax({
+                    url: '@Url.Action("GetCategory", "Product")',
+                    data: { categoryID: categoryID },
+                    success: function (data) {
+                        $.each(data, function (index, subCategory) {
+                            availableSubs.push(subCategory.name);
+                            subCategoryMap[subCategory.name] = subCategory.id;
+                        });
+                        $("#subs").autocomplete({
+                            source: availableSubs
+                        });
+                    }
+                });
+            });
+            $('#categorySelect').trigger('change');
+
+            $('#searchButton').click(function () {
+                var selectedSub = $("#subs").val();
+                var selectedSubID = subCategoryMap[selectedSub];
+                if (selectedSubID) {
+                    $.ajax({
+                        url: '@Url.Action("SearchProducts", "Product")',
+                        data: { subcategoryID: selectedSubID },
+                        success: function (data) {
+                            var productList = $("#productList");
+                            productList.empty();
+                            if (data.length > 0) {
+                                $.each(data, function (index, product) {
+                                    var productColumn = $("<div>").addClass("product-column");
+                                    var productTitle = $("<h3>").text(product.ProductName);
+                                    productColumn.append(productTitle);
+
+                                    $.each(product.Attributes, function (index, attribute) {
+                                        var attributeRow = $("<div>").addClass("attribute-row");
+                                        var attributeName = $("<div>").addClass("attribute-name").text(attribute.AttributeName);
+                                        var attributeDetail = $("<div>").text(attribute.Details);
+                                        attributeRow.append(attributeName);
+                                        attributeRow.append(attributeDetail);
+                                        productColumn.append(attributeRow);
+                                    });
+                                    productList.append(productColumn);
+                                });
+                            } else {
+                                productList.append($("<p>").text("No products found."));
+                            }
+                        }
                     });
                 }
             });
         });
-        $('#categorySelect').trigger('change');
-    });
     </script>
 </body>
 </html>

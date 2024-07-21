@@ -27,18 +27,41 @@ namespace MarketPlaceProject.Controllers
             });
             productMapper = new Mapper(ProductConfig);
         }
+
+        [HttpGet]
         public ActionResult SearchPage()
         {
             var categories = productMapper.Map<List<CategoryVM>>(productService.GetCategories());
             return View(categories);
         }
 
-        public ActionResult GetCategory(int categoryID)
+        [HttpGet]
+        public JsonResult GetCategory(int categoryID)
         {
             var category = productMapper.Map<CategoryVM>(productService.GetCategory(categoryID));
             var subCategories = category.SubCategories;
-            var names = subCategories.Select(n => n.SubCategoryName).ToList();
-            return Json(names, JsonRequestBehavior.AllowGet);
+            var subCategoryList = subCategories.Select(n => new { id = n.SubCategoryID, name = n.SubCategoryName }).ToList();
+            return Json(subCategoryList, JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpGet]
+        public JsonResult SearchProducts(int subcategoryID)
+        {
+            var subcategory = productMapper.Map<SubCategoryVM>(productService.GetSubCategory(subcategoryID));
+            var attributes = subcategory.Attributes;
+            var products = subcategory.Products;
+            var productList = products.Select(p => new
+            {
+                ProductName = p.ProductName,
+                Attributes = p.AttributeDetails
+                        .Select(ad => new
+                        {
+                            AttributeName = attributes.Where(a => a.AttributeID == ad.AttributeID).Select(n => n.AttributeName),
+                            Details = ad.Details
+                        })
+                        .Take(p.AttributeDetails.Count / 2)
+            }).ToList();
+            return Json(productList, JsonRequestBehavior.AllowGet);
         }
     }
 }
