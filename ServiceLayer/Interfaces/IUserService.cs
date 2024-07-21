@@ -8,5 +8,6 @@ namespace ServiceLayer.Interfaces
         IEnumerable<UserDTO> GetAllUsers();
         void CreateUser(UserDTO userDTO);
         void EditUser(UserDTO userDTO);
+        UserDTO GetUserByEmailandPassword(string emailOrUsername, string password);
     }
 }
