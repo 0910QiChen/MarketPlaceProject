@@ -9,5 +9,6 @@ namespace ServiceLayer.Interfaces
         CategoryDTO GetCategory(int id);
         IEnumerable<SubCategoryDTO> GetSubCategories();
         SubCategoryDTO GetSubCategory(int id);
+        ProductDTO GetProduct(int id);
     }
 }

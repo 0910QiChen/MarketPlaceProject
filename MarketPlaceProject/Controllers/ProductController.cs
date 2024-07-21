@@ -49,8 +49,7 @@ namespace MarketPlaceProject.Controllers
         {
             var subcategory = productMapper.Map<SubCategoryVM>(productService.GetSubCategory(subcategoryID));
             var attributes = subcategory.Attributes;
-            var products = subcategory.Products;
-            var productList = products.Select(p => new
+            var products = subcategory.Products.Select(p => new
             {
                 ProductName = p.ProductName,
                 Attributes = p.AttributeDetails
@@ -61,7 +60,32 @@ namespace MarketPlaceProject.Controllers
                         })
                         .Take(p.AttributeDetails.Count / 2)
             }).ToList();
-            return Json(productList, JsonRequestBehavior.AllowGet);
+
+            return Json(products, JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpPost]
+        public ActionResult CompareProducts(string productIDs, int subcategoryID)
+        {
+            var productIDList = productIDs.Split(',').Select(int.Parse).ToList();
+
+            if (productIDList == null || !productIDList.Any())
+            {
+                return RedirectToAction("SearchPage");
+            }
+            var subcategory = productMapper.Map<SubCategoryVM>(productService.GetSubCategory(subcategoryID));
+            var attributes = subcategory.Attributes;
+            var compareList = subcategory.Products.Where(p => productIDList.Contains(p.ProductID)).Select(product => new
+            {
+                ProductName = product.ProductName,
+                Attributes = product.AttributeDetails.Select(ad => new
+                {
+                    AttributeName = attributes.Where(a => a.AttributeID == ad.AttributeID).Select(n => n.AttributeName),
+                    Details = ad.Details
+                })
+            }).ToList();
+
+            return View(compareList);
         }
     }
 }

@@ -55,5 +55,11 @@ namespace ServiceLayer.Services
             var subcategory = mapper.Map<SubCategoryDTO>(_unitOfWork.SubCateRepo.getById(id));
             return subcategory;
         }
+
+        public ProductDTO GetProduct(int id)
+        {
+            var product = mapper.Map<ProductDTO>(_unitOfWork.ProductRepo.getById(id));
+            return product;
+        }
     }
 }
