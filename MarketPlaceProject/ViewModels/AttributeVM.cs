@@ -2,10 +2,10 @@
 
 namespace MarketPlaceProject.ViewModels
 {
-    public class ProductVM
+    public class AttributeVM
     {
-        public int ProductID { get; set; }
-        public string ProductName { get; set; }
+        public int AttributeID { get; set; }
+        public string AttributeName { get; set; }
         public int SubCategoryID { get; set; }
         public SubCategoryVM SubCategory { get; set; }
         public virtual ICollection<ADVM> AttributeDetails { get; set; }

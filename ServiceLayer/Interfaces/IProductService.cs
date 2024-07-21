@@ -5,6 +5,9 @@ namespace ServiceLayer.Interfaces
 {
     public interface IProductService
     {
-        IEnumerable<ProductDTO> GetAllProducts();
+        IEnumerable<CategoryDTO> GetCategories();
+        CategoryDTO GetCategory(int id);
+        IEnumerable<SubCategoryDTO> GetSubCategories();
+        SubCategoryDTO GetSubCategory(int id);
     }
 }

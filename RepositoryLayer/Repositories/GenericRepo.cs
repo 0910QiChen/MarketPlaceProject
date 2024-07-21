@@ -14,6 +14,11 @@ namespace RepositoryLayer.Repositories
             _context = context;
         }
 
+        public T getById(int id)
+        {
+            return _context.Set<T>().Find(id);
+        }
+
         public IEnumerable<T> GetAll()
         {
             return _context.Set<T>().ToList();

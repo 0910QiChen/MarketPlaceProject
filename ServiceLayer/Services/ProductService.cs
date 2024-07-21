@@ -4,22 +4,18 @@ using DomainLayer.Interfaces;
 using DomainLayer.DomainModels;
 using RepositoryLayer.Contexts;
 using RepositoryLayer.Repositories;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using AutoMapper;
 
 namespace ServiceLayer.Services
 {
     public class ProductService : IProductService
     {
-        MarketContext _context = new MarketContext();
+        private readonly MarketContext _context = new MarketContext();
 
         private readonly IUnitOfWork _unitOfWork;
 
-        private Mapper mapper;
+        private readonly Mapper mapper;
 
         public ProductService()
         {
@@ -36,10 +32,28 @@ namespace ServiceLayer.Services
             mapper = new Mapper(config);
         }
 
-        public IEnumerable<ProductDTO> GetAllProducts()
+        public IEnumerable<CategoryDTO> GetCategories()
         {
-            var products = mapper.Map<List<ProductDTO>>(_unitOfWork.ProductRepo.GetAll());
-            return products;
+            var categories = mapper.Map<List<CategoryDTO>>(_unitOfWork.CategoryRepo.GetAll());
+            return categories;
+        }
+
+        public CategoryDTO GetCategory(int id)
+        {
+            var category = mapper.Map<CategoryDTO>(_unitOfWork.CategoryRepo.getById(id));
+            return category;
+        }
+
+        public IEnumerable<SubCategoryDTO> GetSubCategories()
+        {
+            var subcategories = mapper.Map<List<SubCategoryDTO>>(_unitOfWork.SubCateRepo.GetAll());
+            return subcategories;
+        }
+
+        public SubCategoryDTO GetSubCategory(int id)
+        {
+            var subcategory = mapper.Map<SubCategoryDTO>(_unitOfWork.SubCateRepo.getById(id));
+            return subcategory;
         }
     }
 }
