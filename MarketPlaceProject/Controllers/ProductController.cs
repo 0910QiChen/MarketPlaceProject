@@ -27,7 +27,7 @@ namespace MarketPlaceProject.Controllers
             });
             productMapper = new Mapper(ProductConfig);
         }
-        public ActionResult CategoryList()
+        public ActionResult SearchPage()
         {
             var categories = productMapper.Map<List<CategoryVM>>(productService.GetCategories());
             return View(categories);

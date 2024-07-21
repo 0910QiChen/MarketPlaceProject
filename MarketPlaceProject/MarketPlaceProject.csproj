@@ -195,7 +195,7 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\User\UserList.cshtml" />
     <Content Include="Views\User\Signup.cshtml" />
-    <Content Include="Views\Product\CategoryList.cshtml" />
+    <Content Include="Views\Product\SearchPage.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

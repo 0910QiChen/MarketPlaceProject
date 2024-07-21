@@ -1,7 +1,11 @@
 ﻿@model IEnumerable<MarketPlaceProject.ViewModels.CategoryVM>
 
 @{
-    ViewBag.Title = "CategoryList";
+    Layout = null;
+}
+
+@{
+    ViewBag.Title = "Search Page";
 }
 
 <!DOCTYPE html>
@@ -13,25 +17,7 @@
 </head>
 
 <body>
-    <h2>CategoryList</h2>
-
-    <table class="table">
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.CategoryName)
-            </th>
-        </tr>
-
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.CategoryName)
-                </td>
-            </tr>
-        }
-
-    </table>
+    <h2>Search Page</h2>
 
     <div>
         <label for="categorySelect">Select Category:</label>
@@ -53,18 +39,11 @@
             $.ajax({
                 url: '@Url.Action("GetCategory", "Product")',
                 data: { categoryID: categoryID },
-
                 success: function (data) {
-                    console.log(data);
-                    console.log(typeof $.fn.autocomplete);
                     availableSubs = data;
                     $("#subs").autocomplete({
                         source: availableSubs
                     });
-                    $("#subs").autocomplete("enable");
-                },
-                error: function (xhr, status, error) {
-                    console.error("An error occurred: " + status + " - " + error);
                 }
             });
         });
