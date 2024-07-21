@@ -5,6 +5,7 @@ using ServiceLayer.Services;
 using MarketPlaceProject.ViewModels;
 using System.Collections.Generic;
 using System.Web.Mvc;
+using System.Web.Security;
 
 namespace MarketPlaceProject.Controllers
 {
@@ -51,6 +52,23 @@ namespace MarketPlaceProject.Controllers
         public ActionResult Login()
         {
             return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Login(LoginViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                var userDTO = userService.GetUserByEmailandPassword(model.EmailOrUsername, model.Password);
+                if (userDTO != null)
+                {
+                    FormsAuthentication.SetAuthCookie(userDTO.Email, false);
+                    return RedirectToAction("UserList");
+                }
+                ModelState.AddModelError("", "Invalid email or password.");
+            }
+            return View(model);
         }
     }
 }

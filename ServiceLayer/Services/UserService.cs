@@ -6,6 +6,7 @@ using ServiceLayer.Interfaces;
 using AutoMapper;
 using DomainLayer.DomainModels;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace ServiceLayer.Services
 {
@@ -50,6 +51,12 @@ namespace ServiceLayer.Services
                 _unitOfWork.UserRepo.Update(user);
                 _unitOfWork.commit();
             }
+        }
+        public UserDTO GetUserByEmailandPassword(string emailOrUsername, string password)
+        {
+            var user = _unitOfWork.UserRepo.GetAll()
+                .FirstOrDefault(u => (u.Email == emailOrUsername || u.Username == emailOrUsername) && u.Password == password);
+            return mapper.Map<UserDTO>(user);
         }
     }
 }
