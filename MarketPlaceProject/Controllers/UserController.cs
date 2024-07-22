@@ -44,7 +44,7 @@ namespace MarketPlaceProject.Controllers
             {
                 var userDTO = userMapper.Map<UserDTO>(userVM);
                 userService.CreateUser(userDTO);
-                return RedirectToAction("UserList");
+                return RedirectToAction("Login");
             }
             return View(userVM);
         }
