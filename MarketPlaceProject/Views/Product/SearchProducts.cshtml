@@ -1,0 +1,44 @@
+﻿@model MarketPlaceProject.ViewModels.SearchVM
+
+@{ 
+    ViewBag.Title = "Search Product";
+}
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+    <h2>Search Products</h2>
+    @Html.Partial("_SearchBar", Model.Categories)
+
+    <button id="compareButton">Compare</button>
+
+    <div class="search-product-table">
+        @foreach (var product in Model.SubCategory.Products)
+        {
+            <div class="search-product-column">
+                <h3>@product.ProductName</h3>
+                <input type="checkbox" value="@product.ProductID" class="product-checkbox">
+                @foreach (var attribute in Model.SubCategory.Attributes)
+                {
+                    var detail = attribute.AttributeDetails.FirstOrDefault(ad => ad.ProductID == product.ProductID).Details;
+                    <div class="search-attribute-row">
+                        <div class="search-attribute-name">
+                            @attribute.AttributeName
+                        </div>
+                        @detail
+                    </div>
+                }
+            </div>
+        }
+    </div>
+</body>
+</html>

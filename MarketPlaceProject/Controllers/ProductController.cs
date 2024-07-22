@@ -25,12 +25,13 @@ namespace MarketPlaceProject.Controllers
                 cfg.CreateMap<AttributeDTO, AttributeVM>();
                 cfg.CreateMap<ADDTO, ADVM>();
                 cfg.CreateMap<CompareDTO, CompareVM>();
+                cfg.CreateMap<SearchDTO, SearchVM>();
             });
             productMapper = new Mapper(ProductConfig);
         }
 
         [HttpGet]
-        public ActionResult SearchPage(int subcategoryID)
+        public ActionResult MainPage()
         {
             var categories = productMapper.Map<List<CategoryVM>>(productService.GetCategories());
             return View(categories);
@@ -46,24 +47,10 @@ namespace MarketPlaceProject.Controllers
         }
 
         [HttpGet]
-        public JsonResult SearchProducts(int subcategoryID)
+        public ActionResult SearchProducts(int subcategoryID)
         {
-            var subcategory = productMapper.Map<SubCategoryVM>(productService.GetSubCategory(subcategoryID));
-            var attributes = subcategory.Attributes;
-            var products = subcategory.Products.Select(p => new
-            {
-                ProductID = p.ProductID,
-                ProductName = p.ProductName,
-                Attributes = p.AttributeDetails
-                        .Select(ad => new
-                        {
-                            AttributeName = attributes.Where(a => a.AttributeID == ad.AttributeID).Select(n => n.AttributeName),
-                            Details = ad.Details
-                        })
-                        .Take(p.AttributeDetails.Count / 2)
-            }).ToList();
-
-            return Json(products, JsonRequestBehavior.AllowGet);
+            var searchList = productMapper.Map<SearchVM>(productService.GetSearches(subcategoryID));
+            return View(searchList);
         }
 
         [HttpGet]

@@ -1,24 +1,26 @@
 ﻿@model MarketPlaceProject.ViewModels.CompareVM
 
 @{
-    Layout = null;
+    ViewBag.Title = "Compare Products";
 }
 
 @{
-    ViewBag.Title = "Compare Products";
+    Layout = null;
 }
 
 <!DOCTYPE html>
 <html>
-    <head>
-    
-    </head>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
+</head>
 
-    <body>
-        <h2>Compare Products</h2>
+<body>
+    <h2>Compare Products</h2>
 
-        @Html.Partial("_SearchBar", Model.Categories)
+    @Html.Partial("_SearchBar", Model.Categories)
 
+    <div class="compare-container">
         <table>
             <thead>
                 <tr>
@@ -43,5 +45,6 @@
                 }
             </tbody>
         </table>
-    </body>
+    </div>
+</body>
 </html>

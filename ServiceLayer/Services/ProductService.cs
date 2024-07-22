@@ -63,6 +63,18 @@ namespace ServiceLayer.Services
             return product;
         }
 
+        public SearchDTO GetSearches(int id)
+        {
+            var categories = mapper.Map<List<CategoryDTO>>(_unitOfWork.CategoryRepo.GetAll());
+            var subcategory = mapper.Map<SubCategoryDTO>(_unitOfWork.SubCateRepo.getById(id));
+            var searchList = new SearchDTO
+            {
+                Categories = categories,
+                SubCategory = subcategory,
+            };
+            return searchList;
+        }
+
         public CompareDTO GetCompares(string idList)
         {
             var productIDList = idList.Split(',').Select(int.Parse).ToList();

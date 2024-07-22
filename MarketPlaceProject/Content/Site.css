@@ -18,3 +18,160 @@ select,
 textarea {
     max-width: 280px;
 }
+
+/* Search Elements */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f8ff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.search-product-table {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    max-width: 1200px;
+}
+
+.search-product-column {
+    border: 1px solid #ccc;
+    margin: 10px;
+    padding: 20px;
+    width: 300px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+    .search-product-column h3 {
+        margin-top: 0;
+        font-size: 18px;
+        color: #007bff;
+    }
+
+    .search-product-column input[type="checkbox"] {
+        width: 24px;
+        height: 24px;
+        margin-right: 10px;
+        cursor: pointer;
+    }
+
+.search-attribute-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 5px;
+}
+
+.search-attribute-name {
+    font-weight: bold;
+}
+
+.search-no-products {
+    text-align: center;
+    font-size: 18px;
+    color: #999;
+}
+
+.search-container {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+}
+
+#categorySelect {
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-right: 10px;
+}
+
+#subs {
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 200px;
+    margin-right: 10px;
+}
+
+#searchButton {
+    padding: 5px 10px;
+    border: none;
+    background-color: #007bff;
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+    #searchButton:hover {
+        background-color: #0056b3;
+    }
+
+    #searchButton img {
+        width: 20px;
+        height: 20px;
+        vertical-align: middle;
+    }
+
+/* Compare Elements */
+#compareButton {
+    display: block;
+    margin: 20px 0;
+    padding: 10px 20px;
+    font-size: 16px;
+    color: #fff;
+    background-color: #007bff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+    #compareButton:hover {
+        background-color: #0056b3;
+    }
+
+.compare-container {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 20px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+    text-align: center;
+    color: #007bff;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th, td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+th {
+    background-color: #007bff;
+    color: #fff;
+}
+
+tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+tr:hover {
+    background-color: #f1f1f1;
+}

@@ -1,0 +1,24 @@
+﻿@model IEnumerable<MarketPlaceProject.ViewModels.CategoryVM>
+
+@{
+    ViewBag.Title = "Main Page";
+}
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+    <h2>Main Page</h2>
+
+    @Html.Partial("_SearchBar", Model)
+
+</body>
+</html>

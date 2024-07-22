@@ -59,6 +59,7 @@
     <Compile Include="DTOs\CategoryDTO.cs" />
     <Compile Include="DTOs\CompareDTO.cs" />
     <Compile Include="DTOs\ProductDTO.cs" />
+    <Compile Include="DTOs\SearchDTO.cs" />
     <Compile Include="DTOs\SubCategoryDTO.cs" />
     <Compile Include="DTOs\UserDTO.cs" />
     <Compile Include="Interfaces\IProductService.cs" />
