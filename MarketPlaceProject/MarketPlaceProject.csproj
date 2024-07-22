@@ -139,6 +139,7 @@
     <Compile Include="ViewModels\ADVM.cs" />
     <Compile Include="ViewModels\AttributeVM.cs" />
     <Compile Include="ViewModels\CategoryVM.cs" />
+    <Compile Include="ViewModels\CompareVM.cs" />
     <Compile Include="ViewModels\LoginViewModel.cs" />
     <Compile Include="ViewModels\ProductVM.cs" />
     <Compile Include="ViewModels\SubCategoryVM.cs" />
@@ -202,6 +203,7 @@
     <Content Include="Views\Product\SearchPage.cshtml" />
     <Content Include="Views\User\Login.cshtml" />
     <Content Include="Views\Product\CompareProducts.cshtml" />
+    <Content Include="Views\Shared\_SearchBar.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

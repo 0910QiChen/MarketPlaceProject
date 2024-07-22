@@ -24,12 +24,13 @@ namespace MarketPlaceProject.Controllers
                 cfg.CreateMap<ProductDTO, ProductVM>();
                 cfg.CreateMap<AttributeDTO, AttributeVM>();
                 cfg.CreateMap<ADDTO, ADVM>();
+                cfg.CreateMap<CompareDTO, CompareVM>();
             });
             productMapper = new Mapper(ProductConfig);
         }
 
         [HttpGet]
-        public ActionResult SearchPage()
+        public ActionResult SearchPage(int subcategoryID)
         {
             var categories = productMapper.Map<List<CategoryVM>>(productService.GetCategories());
             return View(categories);
@@ -51,6 +52,7 @@ namespace MarketPlaceProject.Controllers
             var attributes = subcategory.Attributes;
             var products = subcategory.Products.Select(p => new
             {
+                ProductID = p.ProductID,
                 ProductName = p.ProductName,
                 Attributes = p.AttributeDetails
                         .Select(ad => new
@@ -64,27 +66,10 @@ namespace MarketPlaceProject.Controllers
             return Json(products, JsonRequestBehavior.AllowGet);
         }
 
-        [HttpPost]
-        public ActionResult CompareProducts(string productIDs, int subcategoryID)
+        [HttpGet]
+        public ActionResult CompareProducts(string productIDs)
         {
-            var productIDList = productIDs.Split(',').Select(int.Parse).ToList();
-
-            if (productIDList == null || !productIDList.Any())
-            {
-                return RedirectToAction("SearchPage");
-            }
-            var subcategory = productMapper.Map<SubCategoryVM>(productService.GetSubCategory(subcategoryID));
-            var attributes = subcategory.Attributes;
-            var compareList = subcategory.Products.Where(p => productIDList.Contains(p.ProductID)).Select(product => new
-            {
-                ProductName = product.ProductName,
-                Attributes = product.AttributeDetails.Select(ad => new
-                {
-                    AttributeName = attributes.Where(a => a.AttributeID == ad.AttributeID).Select(n => n.AttributeName),
-                    Details = ad.Details
-                })
-            }).ToList();
-
+            var compareList = productMapper.Map<CompareVM>(productService.GetCompares(productIDs));
             return View(compareList);
         }
     }

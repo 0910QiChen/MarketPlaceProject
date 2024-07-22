@@ -12,7 +12,7 @@ namespace MarketPlaceProject.Controllers
     public class UserController : Controller
     {
         public IUserService userService;
-        private Mapper userMapper;
+        private readonly Mapper userMapper;
 
         public UserController()
         {

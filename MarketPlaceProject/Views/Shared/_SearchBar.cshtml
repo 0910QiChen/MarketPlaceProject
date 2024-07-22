@@ -1,0 +1,130 @@
+﻿@model IEnumerable<MarketPlaceProject.ViewModels.CategoryVM>
+
+<link rel="stylesheet" href="https://code.jquery.com/ui/1.13.3/themes/base/jquery-ui.css">
+<script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+<script src="https://code.jquery.com/ui/1.13.3/jquery-ui.js"></script>
+
+<style>
+    .search-container {
+        display: flex;
+        align-items: center;
+        padding: 10px;
+        background-color: #fff;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        border-radius: 4px;
+    }
+
+    #categorySelect {
+        padding: 5px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        margin-right: 10px;
+    }
+
+    #subs {
+        padding: 5px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        width: 200px;
+        margin-right: 10px;
+    }
+
+    #searchButton {
+        padding: 5px 10px;
+        border: none;
+        background-color: #007bff;
+        color: white;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+        #searchButton:hover {
+            background-color: #0056b3;
+        }
+</style>
+
+<div class="search-container">
+    <label for="categorySelect">Category:</label>
+    <select id="categorySelect" name="categorySelect">
+        @foreach (var category in Model)
+        {
+            <option value="@category.CategoryID">@category.CategoryName</option>
+        }
+    </select>
+    <input id="subs" name="SubCategories" placeholder="Search..." />
+    <button id="searchButton">
+        <img src="~/Content/icons/search.png" alt="Search" style="width: 20px; height: 20px; vertical-align: middle;" />
+    </button>
+</div>
+
+<script>
+    var availableSubs = [];
+    var subCategoryMap = {};
+    $(function () {
+        $('#categorySelect').change(function () {
+            availableSubs = [];
+            var categoryID = $(this).val();
+            $.ajax({
+                url: '@Url.Action("GetCategory", "Product")',
+                data: { categoryID: categoryID },
+                success: function (data) {
+                    $.each(data, function (index, subCategory) {
+                        availableSubs.push(subCategory.name);
+                        subCategoryMap[subCategory.name] = subCategory.id;
+                    });
+                    $("#subs").autocomplete({
+                        source: availableSubs
+                    });
+                }
+            });
+        });
+        $('#categorySelect').trigger('change');
+
+        $('#searchButton').click(function () {
+            var selectedSub = $("#subs").val();
+            var selectedSubID = subCategoryMap[selectedSub];
+            if (selectedSubID) {
+                $.ajax({
+                    url: '@Url.Action("SearchProducts", "Product")',
+                    data: { subcategoryID: selectedSubID },
+                    success: function (data) {
+                        var productList = $("#productList");
+                        productList.empty();
+                        if (data.length > 0) {
+                            $.each(data, function (index, product) {
+                                var productColumn = $("<div>").addClass("product-column");
+                                var productTitle = $("<h3>").text(product.ProductName);
+                                productColumn.append(productTitle);
+                                var checkbox = $("<input>").attr("type", "checkbox").attr("value", product.ProductID).addClass("product-checkbox");
+                                productColumn.append(checkbox);
+
+                                $.each(product.Attributes, function (index, attribute) {
+                                    var attributeRow = $("<div>").addClass("attribute-row");
+                                    var attributeName = $("<div>").addClass("attribute-name").text(attribute.AttributeName);
+                                    var attributeDetail = $("<div>").text(attribute.Details);
+                                    attributeRow.append(attributeName);
+                                    attributeRow.append(attributeDetail);
+                                    productColumn.append(attributeRow);
+                                });
+                                productList.append(productColumn);
+                                $('#compareButton').show();
+                            });
+                        } else {
+                            productList.append($("<p>").addClass("no-products").text("No products found."));
+                            $('#compareButton').hide();
+                        }
+                    }
+                });
+            }
+        });
+        $('#compareButton').click(function () {
+            var selectedProducts = [];
+            $('.product-checkbox:checked').each(function () {
+                selectedProducts.push($(this).val());
+            });
+            if (selectedProducts.length > 0) {
+                window.location.href = '@Url.Action("CompareProducts", "Product")' + '?productIDs=' + encodeURIComponent(selectedProducts.join(','));
+            }
+        });
+    });
+</script>

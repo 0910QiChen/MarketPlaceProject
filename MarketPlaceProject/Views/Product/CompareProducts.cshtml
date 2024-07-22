@@ -1,18 +1,47 @@
-﻿@model IEnumerable<>
+﻿@model MarketPlaceProject.ViewModels.CompareVM
 
 @{
     Layout = null;
 }
 
-<!DOCTYPE html>
+@{
+    ViewBag.Title = "Compare Products";
+}
 
+<!DOCTYPE html>
 <html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>CompareProducts</title>
-</head>
-<body>
-    <div> 
-    </div>
-</body>
+    <head>
+    
+    </head>
+
+    <body>
+        <h2>Compare Products</h2>
+
+        @Html.Partial("_SearchBar", Model.Categories)
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Description</th>
+                    @foreach (var product in Model.Products)
+                    {
+                        <th>@product.ProductName</th>
+                    }
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var attribute in Model.SubCategory.Attributes)
+                {
+                    <tr>
+                        <td>@attribute.AttributeName</td>
+                        @foreach (var product in Model.Products)
+                        {
+                            var detail = attribute.AttributeDetails.FirstOrDefault(ad => ad.ProductID == product.ProductID).Details;
+                            <td>@detail</td>
+                        }
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </body>
 </html>

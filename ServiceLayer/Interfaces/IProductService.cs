@@ -10,5 +10,6 @@ namespace ServiceLayer.Interfaces
         IEnumerable<SubCategoryDTO> GetSubCategories();
         SubCategoryDTO GetSubCategory(int id);
         ProductDTO GetProduct(int id);
+        CompareDTO GetCompares(string idList);
     }
 }

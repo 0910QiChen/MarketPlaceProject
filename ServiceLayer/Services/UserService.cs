@@ -12,11 +12,11 @@ namespace ServiceLayer.Services
 {
     public class UserService : IUserService
     {
-        MarketContext _context = new MarketContext();
+        private readonly MarketContext _context = new MarketContext();
 
         private readonly IUnitOfWork _unitOfWork;
 
-        private Mapper mapper;
+        private readonly Mapper mapper;
 
         public UserService()
         {

@@ -5,6 +5,7 @@ using DomainLayer.DomainModels;
 using RepositoryLayer.Contexts;
 using RepositoryLayer.Repositories;
 using System.Collections.Generic;
+using System.Linq;
 using AutoMapper;
 
 namespace ServiceLayer.Services
@@ -60,6 +61,25 @@ namespace ServiceLayer.Services
         {
             var product = mapper.Map<ProductDTO>(_unitOfWork.ProductRepo.getById(id));
             return product;
+        }
+
+        public CompareDTO GetCompares(string idList)
+        {
+            var productIDList = idList.Split(',').Select(int.Parse).ToList();
+            if (productIDList == null || !productIDList.Any())
+            {
+                return null;
+            }
+            var product = mapper.Map<ProductDTO>(_unitOfWork.ProductRepo.getById(productIDList[0]));
+            var subcategory = mapper.Map<SubCategoryDTO>(_unitOfWork.SubCateRepo.getById(product.SubCategoryID));
+            var productList = subcategory.Products.Where(p => productIDList.Contains(p.ProductID));
+            var compareList = new CompareDTO
+            {
+                Categories = mapper.Map<List<CategoryDTO>>(_unitOfWork.CategoryRepo.GetAll()),
+                SubCategory = subcategory,
+                Products = productList,
+            };
+            return compareList;
         }
     }
 }
