@@ -66,10 +66,8 @@ namespace MarketPlaceProject.Controllers
         {
             var filterDict = Newtonsoft.Json.JsonConvert.DeserializeObject<Dictionary<int, string>>(filters);
 
-            // Fetch products with filters applied
             var filterList = productMapper.Map<List<ProductVM>>(productService.GetFilters(subcategoryID, filterDict));
 
-            // Return partial view with the filtered products
             return PartialView("_ProductList", filterList);
         }
     }
