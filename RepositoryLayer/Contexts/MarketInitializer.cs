@@ -105,70 +105,70 @@ namespace RepositoryLayer.Contexts
             var attributes = new List<Attributes>
             {
                 // Attributes for CPU
-                new Attributes { AttributeName = "Core Count", SubCategoryID = 1 },
-                new Attributes { AttributeName = "Base Clock Speed", SubCategoryID = 1 },
-                new Attributes { AttributeName = "Cache Size", SubCategoryID = 1 },
-                new Attributes { AttributeName = "TDP (Thermal Design Power)", SubCategoryID = 1 },
+                new Attributes { AttributeName = "Core Count", SubCategoryID = 1, AttributeType = "integer" },
+                new Attributes { AttributeName = "Base Clock Speed", SubCategoryID = 1, AttributeType = "float" },
+                new Attributes { AttributeName = "Cache Size", SubCategoryID = 1, AttributeType = "float" },
+                new Attributes { AttributeName = "TDP (Thermal Design Power)", SubCategoryID = 1, AttributeType = "float" },
 
                 // Attributes for GPU
-                new Attributes { AttributeName = "VRAM", SubCategoryID = 2 },
-                new Attributes { AttributeName = "Core Clock Speed", SubCategoryID = 2 },
-                new Attributes { AttributeName = "CUDA Cores", SubCategoryID = 2 },
-                new Attributes { AttributeName = "Ray Tracing Support", SubCategoryID = 2 },
+                new Attributes { AttributeName = "VRAM", SubCategoryID = 2, AttributeType = "integer" },
+                new Attributes { AttributeName = "Core Clock Speed", SubCategoryID = 2, AttributeType = "float" },
+                new Attributes { AttributeName = "CUDA Cores", SubCategoryID = 2, AttributeType = "integer" },
+                new Attributes { AttributeName = "Ray Tracing Support", SubCategoryID = 2, AttributeType = "boolean" },
 
                 // Attributes for Motherboard
-                new Attributes { AttributeName = "Socket Type", SubCategoryID = 3 },
-                new Attributes { AttributeName = "Chipset", SubCategoryID = 3 },
-                new Attributes { AttributeName = "RAM Slots", SubCategoryID = 3 },
-                new Attributes { AttributeName = "PCIe Slots", SubCategoryID = 3 },
+                new Attributes { AttributeName = "Socket Type", SubCategoryID = 3, AttributeType = "string" },
+                new Attributes { AttributeName = "Chipset", SubCategoryID = 3, AttributeType = "string" },
+                new Attributes { AttributeName = "RAM Slots", SubCategoryID = 3, AttributeType = "integer" },
+                new Attributes { AttributeName = "PCIe Slots", SubCategoryID = 3, AttributeType = "integer" },
 
                 // Attributes for RAM
-                new Attributes { AttributeName = "Capacity", SubCategoryID = 4 },
-                new Attributes { AttributeName = "Memory Type", SubCategoryID = 4 },
-                new Attributes { AttributeName = "Speed", SubCategoryID = 4 },
-                new Attributes { AttributeName = "Module Configuration", SubCategoryID = 4 },
+                new Attributes { AttributeName = "Capacity", SubCategoryID = 4, AttributeType = "integer" },
+                new Attributes { AttributeName = "Memory Type", SubCategoryID = 4, AttributeType = "string" },
+                new Attributes { AttributeName = "Speed", SubCategoryID = 4, AttributeType = "float" },
+                new Attributes { AttributeName = "Module Configuration", SubCategoryID = 4, AttributeType = "string" },
 
                 // Attributes for Storage
-                new Attributes { AttributeName = "Capacity", SubCategoryID = 5 },
-                new Attributes { AttributeName = "Interface", SubCategoryID = 5 },
-                new Attributes { AttributeName = "Read Speed", SubCategoryID = 5 },
-                new Attributes { AttributeName = "Write Speed", SubCategoryID = 5 },
+                new Attributes { AttributeName = "Capacity", SubCategoryID = 5, AttributeType = "integer" },
+                new Attributes { AttributeName = "Interface", SubCategoryID = 5, AttributeType = "string" },
+                new Attributes { AttributeName = "Read Speed", SubCategoryID = 5, AttributeType = "float" },
+                new Attributes { AttributeName = "Write Speed", SubCategoryID = 5, AttributeType = "float" },
 
                 // Attributes for Mouse
-                new Attributes { AttributeName = "Connection Type", SubCategoryID = 6 },
-                new Attributes { AttributeName = "DPI", SubCategoryID = 6 },
-                new Attributes { AttributeName = "Battery Type", SubCategoryID = 6 },
-                new Attributes { AttributeName = "Design", SubCategoryID = 6 },
+                new Attributes { AttributeName = "Connection Type", SubCategoryID = 6, AttributeType = "string" },
+                new Attributes { AttributeName = "DPI", SubCategoryID = 6, AttributeType = "integer" },
+                new Attributes { AttributeName = "Battery Type", SubCategoryID = 6, AttributeType = "string" },
+                new Attributes { AttributeName = "Design", SubCategoryID = 6, AttributeType = "string" },
 
                 // Attributes for Keyboard
-                new Attributes { AttributeName = "Switch Type", SubCategoryID = 7 },
-                new Attributes { AttributeName = "Backlighting", SubCategoryID = 7 },
-                new Attributes { AttributeName = "Key Count", SubCategoryID = 7 },
-                new Attributes { AttributeName = "Connection Type", SubCategoryID = 7 },
+                new Attributes { AttributeName = "Switch Type", SubCategoryID = 7, AttributeType = "string" },
+                new Attributes { AttributeName = "Backlighting", SubCategoryID = 7, AttributeType = "string" },
+                new Attributes { AttributeName = "Key Count", SubCategoryID = 7, AttributeType = "integer" },
+                new Attributes { AttributeName = "Connection Type", SubCategoryID = 7, AttributeType = "string" },
 
                 // Attributes for Power Supply
-                new Attributes { AttributeName = "Wattage", SubCategoryID = 8 },
-                new Attributes { AttributeName = "Efficiency Rating", SubCategoryID = 8 },
-                new Attributes { AttributeName = "Modular", SubCategoryID = 8 },
-                new Attributes { AttributeName = "Fan Size", SubCategoryID = 8 },
+                new Attributes { AttributeName = "Wattage", SubCategoryID = 8, AttributeType = "integer" },
+                new Attributes { AttributeName = "Efficiency Rating", SubCategoryID = 8, AttributeType = "string" },
+                new Attributes { AttributeName = "Modular", SubCategoryID = 8, AttributeType = "boolean" },
+                new Attributes { AttributeName = "Fan Size", SubCategoryID = 8, AttributeType = "integer" },
 
                 // Attributes for Cooling System
-                new Attributes { AttributeName = "Cooling Type", SubCategoryID = 9 },
-                new Attributes { AttributeName = "Radiator / Fan Size", SubCategoryID = 9 },
-                new Attributes { AttributeName = "TDP Support", SubCategoryID = 9 },
-                new Attributes { AttributeName = "Fan / Heatpipe Count", SubCategoryID = 9 },
+                new Attributes { AttributeName = "Cooling Type", SubCategoryID = 9, AttributeType = "string" },
+                new Attributes { AttributeName = "Radiator / Fan Size", SubCategoryID = 9, AttributeType = "integer" },
+                new Attributes { AttributeName = "TDP Support", SubCategoryID = 9, AttributeType = "float" },
+                new Attributes { AttributeName = "Fan / Heatpipe Count", SubCategoryID = 9, AttributeType = "integer" },
 
                 // Attributes for Headphones
-                new Attributes { AttributeName = "Type", SubCategoryID = 10 },
-                new Attributes { AttributeName = "Connectivity", SubCategoryID = 10 },
-                new Attributes { AttributeName = "Battery Life", SubCategoryID = 10 },
-                new Attributes { AttributeName = "Noise Cancellation", SubCategoryID = 10 },
+                new Attributes { AttributeName = "Type", SubCategoryID = 10, AttributeType = "string" },
+                new Attributes { AttributeName = "Connectivity", SubCategoryID = 10, AttributeType = "string" },
+                new Attributes { AttributeName = "Battery Life", SubCategoryID = 10, AttributeType = "integer" },
+                new Attributes { AttributeName = "Noise Cancellation", SubCategoryID = 10, AttributeType = "string" },
 
                 // Attributes for Speakers
-                new Attributes { AttributeName = "Speaker Type", SubCategoryID = 11 },
-                new Attributes { AttributeName = "Connectivity", SubCategoryID = 11 },
-                new Attributes { AttributeName = "Power Output", SubCategoryID = 11 },
-                new Attributes { AttributeName = "Woofer Size", SubCategoryID = 11 },
+                new Attributes { AttributeName = "Speaker Type", SubCategoryID = 11, AttributeType = "string" },
+                new Attributes { AttributeName = "Connectivity", SubCategoryID = 11, AttributeType = "string" },
+                new Attributes { AttributeName = "Power Output", SubCategoryID = 11, AttributeType = "float" },
+                new Attributes { AttributeName = "Woofer Size", SubCategoryID = 11, AttributeType = "integer" },
             };
             attributes.ForEach(a => _context.Attributes.Add(a));
             _context.SaveChanges();

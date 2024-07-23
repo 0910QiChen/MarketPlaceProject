@@ -21,7 +21,8 @@ namespace MarketPlaceProject.Controllers
             {
                 cfg.CreateMap<CategoryDTO, CategoryVM>();
                 cfg.CreateMap<SubCategoryDTO, SubCategoryVM>();
-                cfg.CreateMap<ProductDTO, ProductVM>();
+                cfg.CreateMap<ProductDTO, ProductVM>().
+                ForMember(dest => dest.SubCategory, opt => opt.MapFrom(src => src.SubCategory));
                 cfg.CreateMap<AttributeDTO, AttributeVM>();
                 cfg.CreateMap<ADDTO, ADVM>();
                 cfg.CreateMap<CompareDTO, CompareVM>();
@@ -58,6 +59,18 @@ namespace MarketPlaceProject.Controllers
         {
             var compareList = productMapper.Map<CompareVM>(productService.GetCompares(productIDs));
             return View(compareList);
+        }
+
+        [HttpGet]
+        public ActionResult FilterProducts(int subcategoryID, string filters)
+        {
+            var filterDict = Newtonsoft.Json.JsonConvert.DeserializeObject<Dictionary<int, string>>(filters);
+
+            // Fetch products with filters applied
+            var filterList = productMapper.Map<List<ProductVM>>(productService.GetFilters(subcategoryID, filterDict));
+
+            // Return partial view with the filtered products
+            return PartialView("_ProductList", filterList);
         }
     }
 }

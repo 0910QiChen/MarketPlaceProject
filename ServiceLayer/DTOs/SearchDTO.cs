@@ -6,5 +6,6 @@ namespace ServiceLayer.DTOs
     {
         public IEnumerable<CategoryDTO> Categories { get; set; }
         public SubCategoryDTO SubCategory { get; set; }
+        public IEnumerable<ProductDTO> Products { get; set; }
     }
 }

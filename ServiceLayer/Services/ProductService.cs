@@ -7,6 +7,8 @@ using RepositoryLayer.Repositories;
 using System.Collections.Generic;
 using System.Linq;
 using AutoMapper;
+using System;
+using System.Text.RegularExpressions;
 
 namespace ServiceLayer.Services
 {
@@ -26,7 +28,8 @@ namespace ServiceLayer.Services
             {
                 cfg.CreateMap<Categories, CategoryDTO>();
                 cfg.CreateMap<SubCategories, SubCategoryDTO>();
-                cfg.CreateMap<Products, ProductDTO>();
+                cfg.CreateMap<Products, ProductDTO>().
+                ForMember(dest => dest.SubCategory, opt => opt.MapFrom(src => src.SubCategory));
                 cfg.CreateMap<Attributes, AttributeDTO>();
                 cfg.CreateMap<AttributeDetails, ADDTO>();
             });
@@ -71,6 +74,7 @@ namespace ServiceLayer.Services
             {
                 Categories = categories,
                 SubCategory = subcategory,
+                Products = subcategory.Products,
             };
             return searchList;
         }
@@ -92,6 +96,67 @@ namespace ServiceLayer.Services
                 Products = productList,
             };
             return compareList;
+        }
+
+        public List<ProductDTO> GetFilters(int id, Dictionary<int, string> filters)
+        {
+            if (filters != null)
+            {
+                var subcategory = mapper.Map<SubCategoryDTO>(_unitOfWork.SubCateRepo.getById(id));
+                var products = subcategory.Products;
+                var filterList = new List<ProductDTO>();
+
+                for(int i = 0; i < products.Count; i++)
+                {
+                    bool addToList = true;
+                    for (int j = 0; j < filters.Count; j++)
+                    {
+                        var attributeId = filters.Keys.ElementAt(j);
+                        var attribute = subcategory.Attributes.FirstOrDefault(a => a.AttributeID == attributeId);
+                        if(attribute.AttributeType == "integer")
+                        {
+                            var filterValue = int.Parse(filters.Values.ElementAt(j));
+                            var attributeDetail = attribute.AttributeDetails.FirstOrDefault(ad => ad.ProductID == products.ElementAt(i).ProductID).Details;
+                            int value = int.Parse(Regex.Replace(attributeDetail, @"[^\d]", ""));
+                            if(value < filterValue)
+                            {
+                                addToList = false;
+                                break;
+                            }
+                        }
+                        else if (attribute.AttributeType == "float")
+                        {
+                            var filterValue = float.Parse(filters.Values.ElementAt(j));
+                            var attributeDetail = attribute.AttributeDetails.FirstOrDefault(ad => ad.ProductID == products.ElementAt(i).ProductID).Details;
+                            float value = float.Parse(Regex.Match(attributeDetail, @"-?\d+(\.\d+)?").Value);
+                            if(value < filterValue)
+                            {
+                                addToList = false;
+                                break;
+                            }
+                        }
+                        else
+                        {
+                            var filterValue = filters.Values.ElementAt(j);
+                            var attributeDetail = attribute.AttributeDetails.FirstOrDefault(ad => ad.ProductID == products.ElementAt(i).ProductID).Details;
+                            if(attributeDetail != filterValue)
+                            {
+                                addToList = false;
+                                break;
+                            }
+                        }
+                    }
+                    if (addToList)
+                    {
+                        filterList.Add(products.ElementAt(i));
+                    }
+                }
+                return filterList;
+            }
+            else
+            {
+                return null;
+            }
         }
     }
 }

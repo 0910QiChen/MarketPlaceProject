@@ -31,11 +31,16 @@ body {
     margin: 0;
 }
 
+.container {
+    display: flex;
+    margin: 20px;
+}
+
 .search-product-table {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
-    max-width: 1200px;
+    width: 75%;
+    float: right;
 }
 
 .search-product-column {
@@ -119,6 +124,17 @@ body {
         height: 20px;
         vertical-align: middle;
     }
+
+.filter-panel {
+    width: 20%;
+    float: left;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.clear {
+    clear: both;
+}
 
 /* Compare Elements */
 #compareButton {
