@@ -6,4 +6,3 @@
 5. Edit User Information Method
 6. Product Search Method
 7. Filter Search Method
-8. Logout Method
