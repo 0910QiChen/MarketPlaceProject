@@ -1,0 +1,116 @@
+﻿@model MarketPlaceProject.ViewModels.SearchVM
+
+<link rel="stylesheet" href="https://code.jquery.com/ui/1.13.3/themes/base/jquery-ui.css">
+<script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+<script src="https://code.jquery.com/ui/1.13.3/jquery-ui.js"></script>
+
+<div class="filter-panel">
+    <h2>Filter</h2>
+
+    @foreach (var attribute in Model.SubCategory.Attributes)
+    {
+        switch (attribute.AttributeType)
+        {
+            case "integer":
+                <div class="filter-item">
+                    <label>@attribute.AttributeName:</label>
+                    <input type="range"
+                           min="@attribute.MinIntValue"
+                           max="@attribute.MaxIntValue"
+                           step="1"
+                           id="@attribute.AttributeID"
+                           value="@attribute.MinIntValue"
+                           data-type="@attribute.AttributeType" />
+                    <span id="range_value_@attribute.AttributeID">@attribute.MinIntValue</span>
+                </div>
+                break;
+
+            case "float":
+                <div class="filter-item">
+                    <label>@attribute.AttributeName:</label>
+                    <input type="range"
+                           min="@attribute.MinFloatValue"
+                           max="@attribute.MaxFloatValue"
+                           step="0.1"
+                           id="@attribute.AttributeID"
+                           value="@attribute.MinFloatValue"
+                           data-type="@attribute.AttributeType" />
+                    <span id="range_value_@attribute.AttributeID">@attribute.MinFloatValue</span>
+                </div>
+                break;
+
+            default:
+                <div class="filter-item">
+                    <label>@attribute.AttributeName:</label>
+                    <select id="@attribute.AttributeID" class="attribute-select" data-type="@attribute.AttributeType">
+                        <option value="">Select</option>
+                        @foreach (var detail in attribute.AttributeDetails
+                            .Where(ad => Model.Products.Any(p => p.ProductID == ad.ProductID))
+                            .Select(ad => ad.Details)
+                            .Distinct())
+                        {
+                            <option value="@detail">@detail</option>
+                        }
+                    </select>
+                </div>
+                break;
+        }
+    }
+
+    <button id="applyFilters">Apply</button>
+    <button id="resetFilters">Reset</button>
+</div>
+
+<script>
+        $('input[type=range]').on('input', function() {
+            var value = $(this).val();
+            var id = $(this).attr('id');
+            $('#range_value_' + id).text(value);
+        });
+
+        $('#applyFilters').on('click', function() {
+            var filters = {};
+
+            $('input[type=range]').each(function() {
+                var id = $(this).attr('id');
+                var value = $(this).val();
+                filters[id] = value;
+            });
+
+            $('select.attribute-select').each(function() {
+                var id = $(this).attr('id');
+                var value = $(this).val();
+                if (value) {
+                    filters[id] = value;
+                }
+            });
+
+            $.ajax({
+                url: '@Url.Action("FilterProducts", "Product")',
+                data: { subcategoryID: @Model.SubCategory.SubCategoryID, filters: JSON.stringify(filters) },
+                success: function (data) {
+                    console.log(data);
+                    $('.search-product-table').html(data);
+                },
+                error: function (xhr, status, error) {
+                    console.error('Error fetching data:', error);
+                    console.log('Status:', status);
+                    console.log('Response Text:', xhr.responseText);
+                    console.log('Response Status:', xhr.status);
+                    console.log('Response Headers:', xhr.getAllResponseHeaders());
+                }
+            });
+        });
+
+        $('#resetFilters').on('click', function() {
+            $('input[type=range]').each(function() {
+                var minValue = $(this).attr('min');
+                $(this).val(minValue);
+                $('#range_value_' + $(this).attr('id')).text(minValue);
+            });
+
+            $('select.attribute-select').each(function() {
+                $(this).val('');
+            });
+        });
+</script>

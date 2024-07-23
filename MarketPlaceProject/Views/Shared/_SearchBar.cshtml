@@ -44,7 +44,6 @@
         $('#searchButton').click(function () {
             var selectedSub = $("#subs").val();
             var selectedSubID = subCategoryMap[selectedSub];
-            console.log(selectedSubID);
             if (selectedSubID) {
                 window.location.href = '@Url.Action("SearchProducts", "Product")' + '?subcategoryID=' + encodeURIComponent(selectedSubID);
             }
