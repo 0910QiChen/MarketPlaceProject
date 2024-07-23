@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.Web;
 
 namespace MarketPlaceProject.ViewModels
 {
@@ -21,5 +22,8 @@ namespace MarketPlaceProject.ViewModels
         [Required(ErrorMessage = "Confirm Password is required!")]
         [Compare("Password", ErrorMessage = "Passwords do not match!")]
         public string ConfirmedPassword { get; set; }
+
+        public HttpPostedFileBase ProfilePictureFile { get; set; }
+        public string ProfilePictureUrl { get; set; }
     }
 }

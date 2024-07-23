@@ -1,99 +1,98 @@
-﻿/* General Container */
+﻿/* Style for the sign-up button */
+.sign-up-button {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    color: #fff;
+    text-decoration: none;
+    font-size: 25px;
+}
+
+/* Style for the login container */
 .login-container {
+    width: 100%;
     max-width: 400px;
-    margin: 0 auto;
     padding: 20px;
     border-radius: 10px;
-    background-color: #fff;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     text-align: center;
-    margin-top: 100px; /* Adjust as needed */
 }
 
-/* Logo */
+/* Style for the logo */
 .login-logo {
-    width: 100px; /* Adjust size as needed */
-    margin: 0 auto 20px;
-}
-
-/* Form Heading */
-.login-container h2 {
-    font-size: 24px;
-    color: #333;
+    width: 150px;
+    height: auto;
     margin-bottom: 20px;
 }
 
-/* Form Group */
+/* Style for the heading */
+.login-container h2 {
+    font-size: 18px;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+/* Style for form groups */
 .form-group1 {
     margin-bottom: 20px;
     position: relative;
 }
 
-/* Control Label */
-.control-label {
-    display: none; /* Hide labels as they're not shown in the example */
-}
+    .form-group1 i {
+        position: absolute;
+        left: 10px;
+        top: 10px;
+        color: #999;
+    }
 
-/* Form Control */
+/* Style for form controls */
 .form-control {
-    width: 100%;
-    padding: 10px;
+    width: calc(90% - 20px);
+    padding: 10px 10px 10px 30px;
     font-size: 14px;
     border: 1px solid #ccc;
     border-radius: 5px;
-    padding-left: 40px; /* Space for icons */
 }
 
-/* Input Icons */
-.form-group1 i {
-    position: absolute;
-    left: 10px;
-    top: 50%;
-    transform: translateY(-50%);
-    font-size: 20px;
-    color: #888;
+/* Style for validation messages */
+.text-danger {
+    color: #d9534f;
+    font-size: 12px;
+    text-align: left;
+    margin-top: 5px;
 }
 
-/* Submit Button */
+/* Style for the submit button */
 .btn-primary {
     width: 100%;
     padding: 10px;
-    font-size: 16px;
-    color: #fff;
-    background-color: #007bff;
+    background: #337ab7;
     border: none;
     border-radius: 5px;
+    color: #fff;
+    font-size: 16px;
     cursor: pointer;
+    transition: background 0.3s ease;
 }
 
     .btn-primary:hover {
-        background-color: #0056b3;
+        background: #286090;
     }
 
-/* Error Messages */
-.alert-danger {
-    padding: 10px;
-    background-color: #f8d7da;
-    color: #721c24;
-    border: 1px solid #f5c6cb;
-    border-radius: 5px;
-    margin-bottom: 20px;
-    text-align: center;
+/* General styles for the page */
+body {
+    background: linear-gradient(to bottom, #1a73e8, #fff);
+    font-family: 'Arial', sans-serif;
+    color: #333;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
 }
 
-.text-danger {
-    color: #dc3545;
-}
-
-/* Sign-Up Button */
-.sign-up-button {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    color: #007bff;
+a {
+    color: inherit;
     text-decoration: none;
 }
-
-    .sign-up-button:hover {
-        text-decoration: underline;
-    }
