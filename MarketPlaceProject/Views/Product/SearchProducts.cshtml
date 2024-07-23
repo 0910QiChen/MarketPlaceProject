@@ -2,9 +2,6 @@
 
 @{
     ViewBag.Title = "Search Product";
-}
-
-@{
     Layout = null;
 }
 
@@ -21,7 +18,12 @@
     @Html.Partial("_SearchBar", Model.Categories)
 
     <button id="compareButton">Compare</button>
-
+    @if (TempData["compareFailed"] != null)
+    {
+        <div id="compareFailed" class="alert alert-warning">
+            @TempData["compareFailed"]
+        </div>
+    }
     <div class="container">
         @Html.Partial("_FilterBar", Model)
 
@@ -29,3 +31,14 @@
     </div>
 </body>
 </html>
+
+<script>
+    $(document).ready(function () {
+        var messageDiv = $('#compareFailed');
+        if (messageDiv.text().trim().length > 0) {
+            messageDiv.show();
+            setTimeout(function () {
+                messageDiv.fadeOut('slow');
+            }, 5000);
+        }
+    });</script>

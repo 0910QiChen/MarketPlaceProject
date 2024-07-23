@@ -58,6 +58,11 @@ namespace MarketPlaceProject.Controllers
         public ActionResult CompareProducts(string productIDs)
         {
             var compareList = productMapper.Map<CompareVM>(productService.GetCompares(productIDs));
+            if(compareList.Products.Count() < 2)
+            {
+                TempData["compareFailed"] = "Please select two products to compare!";
+                return RedirectToAction("SearchProducts", new { subcategoryID = compareList.SubCategory.SubCategoryID });
+            }
             return View(compareList);
         }
 
