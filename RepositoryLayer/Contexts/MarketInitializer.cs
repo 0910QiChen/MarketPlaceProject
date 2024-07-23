@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Data.Entity;
 using DomainLayer.DomainModels;
+using static System.Data.Entity.Migrations.Model.UpdateDatabaseOperation;
 
 namespace RepositoryLayer.Contexts
 {
@@ -429,6 +430,321 @@ namespace RepositoryLayer.Contexts
             };
             details.ForEach(d => _context.AttributeDetails.Add(d));
             _context.SaveChanges();
+
+
+            var keySpecs = new List<KeySpec>
+    {
+// KeySpecs for Intel Core i9-13900K
+new KeySpec { ProductID = 1, Key = "Core Count", Value = "8" },
+new KeySpec { ProductID = 1, Key = "Base Clock Speed", Value = "3.0 GHz" },
+new KeySpec { ProductID = 1, Key = "Turbo Boost Clock", Value = "5.8 GHz" },
+new KeySpec { ProductID = 1, Key = "Cache Size", Value = "30MB" },
+new KeySpec { ProductID = 1, Key = "TDP", Value = "125W" },
+new KeySpec { ProductID = 1, Key = "Integrated Graphics", Value = "Intel UHD Graphics 770" },
+
+// KeySpecs for AMD Ryzen 9 7950X
+new KeySpec { ProductID = 2, Key = "Core Count", Value = "16" },
+new KeySpec { ProductID = 2, Key = "Base Clock Speed", Value = "4.2 GHz" },
+new KeySpec { ProductID = 2, Key = "Turbo Boost Clock", Value = "5.7 GHz" },
+new KeySpec { ProductID = 2, Key = "Cache Size", Value = "64MB" },
+new KeySpec { ProductID = 2, Key = "TDP", Value = "170W" },
+new KeySpec { ProductID = 2, Key = "Integrated Graphics", Value = "No" },
+
+// KeySpecs for Intel Core i7-13700K
+new KeySpec { ProductID = 3, Key = "Core Count", Value = "8" },
+new KeySpec { ProductID = 3, Key = "Base Clock Speed", Value = "3.4 GHz" },
+new KeySpec { ProductID = 3, Key = "Turbo Boost Clock", Value = "5.4 GHz" },
+new KeySpec { ProductID = 3, Key = "Cache Size", Value = "30MB" },
+new KeySpec { ProductID = 3, Key = "TDP", Value = "125W" },
+new KeySpec { ProductID = 3, Key = "Integrated Graphics", Value = "Intel UHD Graphics 770" },
+
+// KeySpecs for AMD Ryzen 7 7800X
+new KeySpec { ProductID = 4, Key = "Core Count", Value = "8" },
+new KeySpec { ProductID = 4, Key = "Base Clock Speed", Value = "4.4 GHz" },
+new KeySpec { ProductID = 4, Key = "Turbo Boost Clock", Value = "5.0 GHz" },
+new KeySpec { ProductID = 4, Key = "Cache Size", Value = "32MB" },
+new KeySpec { ProductID = 4, Key = "TDP", Value = "105W" },
+new KeySpec { ProductID = 4, Key = "Integrated Graphics", Value = "No" },
+
+// KeySpecs for Intel Core i5-13600K
+new KeySpec { ProductID = 5, Key = "Core Count", Value = "6" },
+new KeySpec { ProductID = 5, Key = "Base Clock Speed", Value = "3.5 GHz" },
+new KeySpec { ProductID = 5, Key = "Turbo Boost Clock", Value = "5.1 GHz" },
+new KeySpec { ProductID = 5, Key = "Cache Size", Value = "20MB" },
+new KeySpec { ProductID = 5, Key = "TDP", Value = "125W" },
+new KeySpec { ProductID = 5, Key = "Integrated Graphics", Value = "Intel UHD Graphics 770" },
+
+// KeySpecs for AMD Ryzen 5 7600X
+new KeySpec { ProductID = 6, Key = "Core Count", Value = "6" },
+new KeySpec { ProductID = 6, Key = "Base Clock Speed", Value = "4.7 GHz" },
+new KeySpec { ProductID = 6, Key = "Turbo Boost Clock", Value = "5.3 GHz" },
+new KeySpec { ProductID = 6, Key = "Cache Size", Value = "38MB" },
+new KeySpec { ProductID = 6, Key = "TDP", Value = "105W" },
+new KeySpec { ProductID = 6, Key = "Integrated Graphics", Value = "No" },
+
+// KeySpecs for NVIDIA GeForce RTX 4090
+new KeySpec { ProductID = 7, Key = "VRAM", Value = "24GB" },
+new KeySpec { ProductID = 7, Key = "Core Clock Speed", Value = "2.52 GHz" },
+new KeySpec { ProductID = 7, Key = "Boost Clock Speed", Value = "2.71 GHz" },
+new KeySpec { ProductID = 7, Key = "CUDA Cores", Value = "16384" },
+new KeySpec { ProductID = 7, Key = "Ray Tracing Support", Value = "Yes" },
+new KeySpec { ProductID = 7, Key = "DLSS Support", Value = "Yes" },
+
+// KeySpecs for AMD Radeon RX 7900 XTX
+new KeySpec { ProductID = 8, Key = "VRAM", Value = "24GB" },
+new KeySpec { ProductID = 8, Key = "Core Clock Speed", Value = "2.4 GHz" },
+new KeySpec { ProductID = 8, Key = "Boost Clock Speed", Value = "2.7 GHz" },
+new KeySpec { ProductID = 8, Key = "Stream Processors", Value = "6144" },
+new KeySpec { ProductID = 8, Key = "Ray Tracing Support", Value = "Yes" },
+new KeySpec { ProductID = 8, Key = "DLSS Support", Value = "No" },
+
+// KeySpecs for NVIDIA GeForce RTX 4080
+new KeySpec { ProductID = 9, Key = "VRAM", Value = "16GB" },
+new KeySpec { ProductID = 9, Key = "Core Clock Speed", Value = "2.21 GHz" },
+new KeySpec { ProductID = 9, Key = "Boost Clock Speed", Value = "2.61 GHz" },
+new KeySpec { ProductID = 9, Key = "CUDA Cores", Value = "9728" },
+new KeySpec { ProductID = 9, Key = "Ray Tracing Support", Value = "Yes" },
+new KeySpec { ProductID = 9, Key = "DLSS Support", Value = "Yes" },
+
+// KeySpecs for AMD Radeon RX 7800 XT
+new KeySpec { ProductID = 10, Key = "VRAM", Value = "16GB" },
+new KeySpec { ProductID = 10, Key = "Core Clock Speed", Value = "2.3 GHz" },
+new KeySpec { ProductID = 10, Key = "Boost Clock Speed", Value = "2.5 GHz" },
+new KeySpec { ProductID = 10, Key = "Stream Processors", Value = "5120" },
+new KeySpec { ProductID = 10, Key = "Ray Tracing Support", Value = "Yes" },
+new KeySpec { ProductID = 10, Key = "DLSS Support", Value = "No" },
+
+// KeySpecs for NVIDIA GeForce RTX 4070 Ti
+new KeySpec { ProductID = 11, Key = "VRAM", Value = "12GB" },
+new KeySpec { ProductID = 11, Key = "Core Clock Speed", Value = "2.31 GHz" },
+new KeySpec { ProductID = 11, Key = "Boost Clock Speed", Value = "2.61 GHz" },
+new KeySpec { ProductID = 11, Key = "CUDA Cores", Value = "7680" },
+new KeySpec { ProductID = 11, Key = "Ray Tracing Support", Value = "Yes" },
+new KeySpec { ProductID = 11, Key = "DLSS Support", Value = "Yes" },
+
+// KeySpecs for AMD Radeon RX 7700 XT
+new KeySpec { ProductID = 12, Key = "VRAM", Value = "12GB" },
+new KeySpec { ProductID = 12, Key = "Core Clock Speed", Value = "2.2 GHz" },
+new KeySpec { ProductID = 12, Key = "Boost Clock Speed", Value = "2.4 GHz" },
+new KeySpec { ProductID = 12, Key = "Stream Processors", Value = "3840" },
+new KeySpec { ProductID = 12, Key = "Ray Tracing Support", Value = "Yes" },
+new KeySpec { ProductID = 12, Key = "DLSS Support", Value = "No" },
+
+// KeySpecs for ASUS ROG Strix Z790-E
+new KeySpec { ProductID = 13, Key = "Socket Type", Value = "LGA 1700" },
+new KeySpec { ProductID = 13, Key = "Chipset", Value = "Intel Z790" },
+new KeySpec { ProductID = 13, Key = "RAM Slots", Value = "4" },
+new KeySpec { ProductID = 13, Key = "PCIe Slots", Value = "3" },
+new KeySpec { ProductID = 13, Key = "M.2 Slots", Value = "4" },
+new KeySpec { ProductID = 13, Key = "USB Ports", Value = "10" },
+
+// KeySpecs for MSI MEG Z790 ACE
+new KeySpec { ProductID = 14, Key = "Socket Type", Value = "LGA 1700" },
+new KeySpec { ProductID = 14, Key = "Chipset", Value = "Intel Z790" },
+new KeySpec { ProductID = 14, Key = "RAM Slots", Value = "4" },
+new KeySpec { ProductID = 14, Key = "PCIe Slots", Value = "4" },
+new KeySpec { ProductID = 14, Key = "M.2 Slots", Value = "5" },
+new KeySpec { ProductID = 14, Key = "USB Ports", Value = "12" },
+
+// KeySpecs for Gigabyte Z790 AORUS Xtreme
+new KeySpec { ProductID = 15, Key = "Socket Type", Value = "LGA 1700" },
+new KeySpec { ProductID = 15, Key = "Chipset", Value = "Intel Z790" },
+new KeySpec { ProductID = 15, Key = "RAM Slots", Value = "4" },
+new KeySpec { ProductID = 15, Key = "PCIe Slots", Value = "4" },
+new KeySpec { ProductID = 15, Key = "M.2 Slots", Value = "5" },
+new KeySpec { ProductID = 15, Key = "USB Ports", Value = "12" },
+
+// KeySpecs for ASRock Z790 Taichi
+new KeySpec { ProductID = 16, Key = "Socket Type", Value = "LGA 1700" },
+new KeySpec { ProductID = 16, Key = "Chipset", Value = "Intel Z790" },
+new KeySpec { ProductID = 16, Key = "RAM Slots", Value = "4" },
+new KeySpec { ProductID = 16, Key = "PCIe Slots", Value = "3" },
+new KeySpec { ProductID = 16, Key = "M.2 Slots", Value = "4" },
+new KeySpec { ProductID = 16, Key = "USB Ports", Value = "10" },
+
+// KeySpecs for ASUS TUF Gaming X670E-Plus
+new KeySpec { ProductID = 17, Key = "Socket Type", Value = "AM5" },
+new KeySpec { ProductID = 17, Key = "Chipset", Value = "AMD X670E" },
+new KeySpec { ProductID = 17, Key = "RAM Slots", Value = "4" },
+new KeySpec { ProductID = 17, Key = "PCIe Slots", Value = "3" },
+new KeySpec { ProductID = 17, Key = "M.2 Slots", Value = "4" },
+new KeySpec { ProductID = 17, Key = "USB Ports", Value = "10" },
+
+// KeySpecs for MSI MAG X670E Tomahawk
+new KeySpec { ProductID = 18, Key = "Socket Type", Value = "AM5" },
+new KeySpec { ProductID = 18, Key = "Chipset", Value = "AMD X670E" },
+new KeySpec { ProductID = 18, Key = "RAM Slots", Value = "4" },
+new KeySpec { ProductID = 18, Key = "PCIe Slots", Value = "3" },
+new KeySpec { ProductID = 18, Key = "M.2 Slots", Value = "4" },
+new KeySpec { ProductID = 18, Key = "USB Ports", Value = "10" },
+
+// KeySpecs for Corsair Vengeance LPX 16GB (2 x 8GB) DDR4-3200
+new KeySpec { ProductID = 19, Key = "Capacity", Value = "16GB" },
+new KeySpec { ProductID = 19, Key = "Memory Type", Value = "DDR4" },
+new KeySpec { ProductID = 19, Key = "Speed", Value = "3200 MHz" },
+new KeySpec { ProductID = 19, Key = "Module Configuration", Value = "2 x 8GB" },
+new KeySpec { ProductID = 19, Key = "CAS Latency", Value = "16" },
+new KeySpec { ProductID = 19, Key = "Voltage", Value = "1.35V" },
+
+// KeySpecs for G.SKILL Trident Z RGB 32GB (2 x 16GB) DDR4-3600
+new KeySpec { ProductID = 20, Key = "Capacity", Value = "32GB" },
+new KeySpec { ProductID = 20, Key = "Memory Type", Value = "DDR4" },
+new KeySpec { ProductID = 20, Key = "Speed", Value = "3600 MHz" },
+new KeySpec { ProductID = 20, Key = "Module Configuration", Value = "2 x 16GB" },
+new KeySpec { ProductID = 20, Key = "CAS Latency", Value = "16" },
+new KeySpec { ProductID = 20, Key = "Voltage", Value = "1.35V" },
+
+// KeySpecs for Kingston Fury Beast 16GB (2 x 8GB) DDR4-3200
+new KeySpec { ProductID = 21, Key = "Capacity", Value = "16GB" },
+new KeySpec { ProductID = 21, Key = "Memory Type", Value = "DDR4" },
+new KeySpec { ProductID = 21, Key = "Speed", Value = "3200 MHz" },
+new KeySpec { ProductID = 21, Key = "Module Configuration", Value = "2 x 8GB" },
+new KeySpec { ProductID = 21, Key = "CAS Latency", Value = "16" },
+new KeySpec { ProductID = 21, Key = "Voltage", Value = "1.35V" },
+
+// KeySpecs for Crucial Ballistix 32GB (2 x 16GB) DDR4-3600
+new KeySpec { ProductID = 22, Key = "Capacity", Value = "32GB" },
+new KeySpec { ProductID = 22, Key = "Memory Type", Value = "DDR4" },
+new KeySpec { ProductID = 22, Key = "Speed", Value = "3600 MHz" },
+new KeySpec { ProductID = 22, Key = "Module Configuration", Value = "2 x 16GB" },
+new KeySpec { ProductID = 22, Key = "CAS Latency", Value = "16" },
+new KeySpec { ProductID = 22, Key = "Voltage", Value = "1.35V" },
+
+// KeySpecs for Corsair Vengeance Pro 16GB (2 x 8GB) DDR4-2666
+new KeySpec { ProductID = 23, Key = "Capacity", Value = "16GB" },
+new KeySpec { ProductID = 23, Key = "Memory Type", Value = "DDR4" },
+new KeySpec { ProductID = 23, Key = "Speed", Value = "2666 MHz" },
+new KeySpec { ProductID = 23, Key = "Module Configuration", Value = "2 x 8GB" },
+new KeySpec { ProductID = 23, Key = "CAS Latency", Value = "16" },
+new KeySpec { ProductID = 23, Key = "Voltage", Value = "1.35V" },
+
+// KeySpecs for G.SKILL Ripjaws V 32GB (2 x 16GB) DDR4-3400
+new KeySpec { ProductID = 24, Key = "Capacity", Value = "32GB" },
+new KeySpec { ProductID = 24, Key = "Memory Type", Value = "DDR4" },
+new KeySpec { ProductID = 24, Key = "Speed", Value = "3400 MHz" },
+new KeySpec { ProductID = 24, Key = "Module Configuration", Value = "2 x 16GB" },
+new KeySpec { ProductID = 24, Key = "CAS Latency", Value = "16" },
+new KeySpec { ProductID = 24, Key = "Voltage", Value = "1.35V" },
+
+// KeySpecs for Samsung 970 EVO Plus 1TB NVMe SSD
+new KeySpec { ProductID = 25, Key = "Capacity", Value = "1TB" },
+new KeySpec { ProductID = 25, Key = "Form Factor", Value = "M.2 NVMe" },
+new KeySpec { ProductID = 25, Key = "Read Speed", Value = "3500 MB/s" },
+new KeySpec { ProductID = 25, Key = "Write Speed", Value = "3300 MB/s" },
+new KeySpec { ProductID = 25, Key = "Sequential Read Speed", Value = "3500 MB/s" },
+new KeySpec { ProductID = 25, Key = "Sequential Write Speed", Value = "3300 MB/s" },
+
+// KeySpecs for Western Digital Black SN850 1TB NVMe SSD
+new KeySpec { ProductID = 26, Key = "Capacity", Value = "1TB" },
+new KeySpec { ProductID = 26, Key = "Form Factor", Value = "M.2 NVMe" },
+new KeySpec { ProductID = 26, Key = "Read Speed", Value = "7000 MB/s" },
+new KeySpec { ProductID = 26, Key = "Write Speed", Value = "5300 MB/s" },
+new KeySpec { ProductID = 26, Key = "Sequential Read Speed", Value = "7000 MB/s" },
+new KeySpec { ProductID = 26, Key = "Sequential Write Speed", Value = "5300 MB/s" },
+
+// KeySpecs for Crucial MX500 1TB SATA SSD
+new KeySpec { ProductID = 27, Key = "Capacity", Value = "1TB" },
+new KeySpec { ProductID = 27, Key = "Form Factor", Value = "2.5\" SATA" },
+new KeySpec { ProductID = 27, Key = "Read Speed", Value = "560 MB/s" },
+new KeySpec { ProductID = 27, Key = "Write Speed", Value = "510 MB/s" },
+new KeySpec { ProductID = 27, Key = "Sequential Read Speed", Value = "560 MB/s" },
+new KeySpec { ProductID = 27, Key = "Sequential Write Speed", Value = "510 MB/s" },
+
+// KeySpecs for Samsung 860 EVO 1TB SATA SSD
+new KeySpec { ProductID = 28, Key = "Capacity", Value = "1TB" },
+new KeySpec { ProductID = 28, Key = "Form Factor", Value = "2.5\" SATA" },
+new KeySpec { ProductID = 28, Key = "Read Speed", Value = "550 MB/s" },
+new KeySpec { ProductID = 28, Key = "Write Speed", Value = "520 MB/s" },
+new KeySpec { ProductID = 28, Key = "Sequential Read Speed", Value = "550 MB/s" },
+new KeySpec { ProductID = 28, Key = "Sequential Write Speed", Value = "520 MB/s" },
+
+// KeySpecs for Seagate Barracuda 2TB HDD
+new KeySpec { ProductID = 29, Key = "Capacity", Value = "2TB" },
+new KeySpec { ProductID = 29, Key = "Form Factor", Value = "3.5\" HDD" },
+new KeySpec { ProductID = 29, Key = "RPM", Value = "7200 RPM" },
+new KeySpec { ProductID = 29, Key = "Cache Size", Value = "256MB" },
+
+// KeySpecs for Western Digital Blue 2TB HDD
+new KeySpec { ProductID = 30, Key = "Capacity", Value = "2TB" },
+new KeySpec { ProductID = 30, Key = "Form Factor", Value = "3.5\" HDD" },
+new KeySpec { ProductID = 30, Key = "RPM", Value = "7200 RPM" },
+new KeySpec { ProductID = 30, Key = "Cache Size", Value = "256MB" },
+
+// KeySpecs for Logitech MX Master 3
+new KeySpec { ProductID = 31, Key = "Connectivity", Value = "Bluetooth, USB" },
+new KeySpec { ProductID = 31, Key = "DPI", Value = "4000 DPI" },
+new KeySpec { ProductID = 31, Key = "Buttons", Value = "7" },
+new KeySpec { ProductID = 31, Key = "Battery Life", Value = "70 days" },
+
+// KeySpecs for Razer DeathAdder V2
+new KeySpec { ProductID = 32, Key = "Connectivity", Value = "Wired" },
+new KeySpec { ProductID = 32, Key = "DPI", Value = "20000 DPI" },
+new KeySpec { ProductID = 32, Key = "Buttons", Value = "8" },
+new KeySpec { ProductID = 32, Key = "Sensor Type", Value = "Optical" },
+
+// KeySpecs for Corsair K95 RGB Platinum
+new KeySpec { ProductID = 33, Key = "Connectivity", Value = "Wired" },
+new KeySpec { ProductID = 33, Key = "Switch Type", Value = "Cherry MX" },
+new KeySpec { ProductID = 33, Key = "Backlighting", Value = "RGB" },
+new KeySpec { ProductID = 33, Key = "Macro Keys", Value = "6" },
+
+// KeySpecs for Razer BlackWidow V3
+new KeySpec { ProductID = 34, Key = "Connectivity", Value = "Wired" },
+new KeySpec { ProductID = 34, Key = "Switch Type", Value = "Razer Mechanical" },
+new KeySpec { ProductID = 34, Key = "Backlighting", Value = "RGB" },
+new KeySpec { ProductID = 34, Key = "Macro Keys", Value = "None" },
+
+// KeySpecs for Corsair RM850x
+new KeySpec { ProductID = 35, Key = "Wattage", Value = "850W" },
+new KeySpec { ProductID = 35, Key = "Certification", Value = "80 Plus Gold" },
+new KeySpec { ProductID = 35, Key = "Modular", Value = "Fully Modular" },
+new KeySpec { ProductID = 35, Key = "Fan Size", Value = "135mm" },
+
+// KeySpecs for EVGA SuperNOVA 750 G5
+new KeySpec { ProductID = 36, Key = "Wattage", Value = "750W" },
+new KeySpec { ProductID = 36, Key = "Certification", Value = "80 Plus Gold" },
+new KeySpec { ProductID = 36, Key = "Modular", Value = "Fully Modular" },
+new KeySpec { ProductID = 36, Key = "Fan Size", Value = "135mm" },
+
+// KeySpecs for Noctua NH-D15
+new KeySpec { ProductID = 37, Key = "Type", Value = "Air Cooler" },
+new KeySpec { ProductID = 37, Key = "Fan Size", Value = "140mm" },
+new KeySpec { ProductID = 37, Key = "Heatpipes", Value = "6" },
+new KeySpec { ProductID = 37, Key = "Compatibility", Value = "Intel & AMD" },
+
+// KeySpecs for Corsair H150i Elite Capellix
+new KeySpec { ProductID = 38, Key = "Type", Value = "Liquid Cooler" },
+new KeySpec { ProductID = 38, Key = "Radiator Size", Value = "360mm" },
+new KeySpec { ProductID = 38, Key = "Fans", Value = "3 x 120mm" },
+new KeySpec { ProductID = 38, Key = "Compatibility", Value = "Intel & AMD" },
+
+// KeySpecs for Sony WH-1000XM5
+new KeySpec { ProductID = 39, Key = "Connectivity", Value = "Bluetooth, Wired" },
+new KeySpec { ProductID = 39, Key = "Noise Cancellation", Value = "Active" },
+new KeySpec { ProductID = 39, Key = "Battery Life", Value = "30 hours" },
+new KeySpec { ProductID = 39, Key = "Driver Size", Value = "40mm" },
+
+// KeySpecs for Bose QuietComfort 45
+new KeySpec { ProductID = 40, Key = "Connectivity", Value = "Bluetooth, Wired" },
+new KeySpec { ProductID = 40, Key = "Noise Cancellation", Value = "Active" },
+new KeySpec { ProductID = 40, Key = "Battery Life", Value = "24 hours" },
+new KeySpec { ProductID = 40, Key = "Driver Size", Value = "40mm" },
+
+// KeySpecs for Klipsch R-51PM
+new KeySpec { ProductID = 41, Key = "Connectivity", Value = "Bluetooth, Wired" },
+new KeySpec { ProductID = 41, Key = "Driver Size", Value = "5.25\"" },
+new KeySpec { ProductID = 41, Key = "Amplification", Value = "Integrated" },
+new KeySpec { ProductID = 41, Key = "Frequency Response", Value = "62Hz - 21kHz" },
+
+// KeySpecs for Polk Audio RTI A1
+new KeySpec { ProductID = 42, Key = "Connectivity", Value = "Wired" },
+new KeySpec { ProductID = 42, Key = "Driver Size", Value = "5.25\"" },
+new KeySpec { ProductID = 42, Key = "Frequency Response", Value = "48Hz - 27kHz" },
+new KeySpec { ProductID = 42, Key = "Impedance", Value = "8 Ohms" },
+
+    };
+            keySpecs.ForEach(s => _context.KeySpec.Add(s));
+            _context.SaveChanges();
         }
     }
-}
+    }

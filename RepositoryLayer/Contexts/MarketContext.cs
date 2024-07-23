@@ -16,6 +16,7 @@ namespace RepositoryLayer.Contexts
         public DbSet<Products> Products { get; set; }
         public DbSet<Attributes> Attributes { get; set; }
         public DbSet<AttributeDetails> AttributeDetails { get; set; }
+        public DbSet<KeySpec> KeySpec { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -49,6 +50,12 @@ namespace RepositoryLayer.Contexts
                 .HasRequired(ad => ad.Product)
                 .WithMany(p => p.AttributeDetails)
                 .HasForeignKey(ad => ad.ProductID)
+                .WillCascadeOnDelete(false);
+
+           modelBuilder.Entity<Products>()
+                .HasMany(p => p.KeySpecs)
+                .WithRequired(ks => ks.Product)
+                .HasForeignKey(ks => ks.ProductID)
                 .WillCascadeOnDelete(false);
         }
     }

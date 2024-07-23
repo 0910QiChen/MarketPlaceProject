@@ -59,5 +59,18 @@ namespace MarketPlaceProject.Controllers
             var compareList = productMapper.Map<CompareVM>(productService.GetCompares(productIDs));
             return View(compareList);
         }
+
+        [HttpGet]
+        public ActionResult KeySpecs(int productId)
+        {
+            var keySpecs = productService.GetKeySpecsByProductId(productId);
+            var keySpecViewModel = keySpecs.Select(k => new KeySpecVM
+            {
+                Key = k.Key,
+                Value = k.Value
+            }).ToList();
+
+            return View(keySpecViewModel);
+        }
     }
 }

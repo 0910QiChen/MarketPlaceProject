@@ -140,6 +140,7 @@
     <Compile Include="ViewModels\AttributeVM.cs" />
     <Compile Include="ViewModels\CategoryVM.cs" />
     <Compile Include="ViewModels\CompareVM.cs" />
+    <Compile Include="ViewModels\KeySpecVM.cs" />
     <Compile Include="ViewModels\LoginViewModel.cs" />
     <Compile Include="ViewModels\ProductVM.cs" />
     <Compile Include="ViewModels\SearchVM.cs" />
@@ -206,9 +207,11 @@
     <Content Include="Views\Product\CompareProducts.cshtml" />
     <Content Include="Views\Shared\_SearchBar.cshtml" />
     <Content Include="Views\Product\SearchProducts.cshtml" />
+    <Content Include="Views\Product\KeySpecs.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Content\Images\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.rtl.min.css.map" />
