@@ -57,6 +57,7 @@
     <Compile Include="DomainModels\AttributeDetails.cs" />
     <Compile Include="DomainModels\Attributes.cs" />
     <Compile Include="DomainModels\Categories.cs" />
+    <Compile Include="DomainModels\KeySpec.cs" />
     <Compile Include="DomainModels\Products.cs" />
     <Compile Include="DomainModels\SubCategories.cs" />
     <Compile Include="DomainModels\Users.cs" />
@@ -64,6 +65,7 @@
     <Compile Include="Interfaces\IAttributeRepo.cs" />
     <Compile Include="Interfaces\ICategoryRepo.cs" />
     <Compile Include="Interfaces\IGenericRepo.cs" />
+    <Compile Include="Interfaces\IKeySpecRepo.cs" />
     <Compile Include="Interfaces\IProductRepo.cs" />
     <Compile Include="Interfaces\ISubCateRepo.cs" />
     <Compile Include="Interfaces\IUnitOfWork.cs" />

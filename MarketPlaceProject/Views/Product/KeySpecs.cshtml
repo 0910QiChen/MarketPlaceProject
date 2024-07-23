@@ -1,0 +1,26 @@
+﻿@model IEnumerable<MarketPlaceProject.ViewModels.KeySpecVM>
+
+@{
+    ViewBag.Title = "Key Specifications";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
+    <title>Key Specifications</title>
+</head>
+<body>
+    <h2>Key Specifications</h2>
+    <div class="keyspec-details">
+        <ul>
+            @foreach (var item in Model)
+            {
+                <li><strong>@item.Key:</strong> @item.Value</li>
+            }
+            <div>Manufacturer</div>
+        </ul>
+    </div>
+</body>
+</html>

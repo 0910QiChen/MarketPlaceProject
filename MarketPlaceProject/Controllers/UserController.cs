@@ -64,7 +64,7 @@ namespace MarketPlaceProject.Controllers
                 if (userDTO != null)
                 {
                     FormsAuthentication.SetAuthCookie(userDTO.Email, false);
-                    return RedirectToAction("UserList");
+                    return RedirectToAction("../Product/MainPage");
                 }
                 ModelState.AddModelError("", "Invalid email or password.");
             }
