@@ -13,6 +13,7 @@ namespace RepositoryLayer.Repositories
         public ISubCateRepo SubCateRepo { get; }
         public IAttributeRepo AttributeRepo { get; }
         public IADRepo ADRepo { get; }
+        public IKeySpecRepo KeySpecRepo { get; }
 
         public UnitOfWork(MarketContext context)
         {
@@ -23,6 +24,7 @@ namespace RepositoryLayer.Repositories
             SubCateRepo = new SubCateRepo(_context);
             AttributeRepo = new AttributeRepo(_context);
             ADRepo = new ADRepo(_context);
+            KeySpecRepo = new KeySpecRepo(_context);
         }
 
         public void commit()

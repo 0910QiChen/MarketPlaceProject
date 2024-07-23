@@ -32,6 +32,7 @@ namespace ServiceLayer.Services
                 ForMember(dest => dest.SubCategory, opt => opt.MapFrom(src => src.SubCategory));
                 cfg.CreateMap<Attributes, AttributeDTO>();
                 cfg.CreateMap<AttributeDetails, ADDTO>();
+                cfg.CreateMap<KeySpec, KeySpecDTO>();
             });
             mapper = new Mapper(config);
         }
@@ -157,6 +158,12 @@ namespace ServiceLayer.Services
             {
                 return null;
             }
+        }
+
+        public IEnumerable<KeySpecDTO> GetKeySpecsByProductId(int productId)
+        {
+            var keySpecs = _unitOfWork.KeySpecRepo.GetAll().Where(k => k.ProductID == productId);
+            return mapper.Map<IEnumerable<KeySpecDTO>>(keySpecs);
         }
     }
 }

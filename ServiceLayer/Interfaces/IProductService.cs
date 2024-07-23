@@ -13,5 +13,6 @@ namespace ServiceLayer.Interfaces
         SearchDTO GetSearches(int id);
         CompareDTO GetCompares(string idList);
         List<ProductDTO> GetFilters(int id, Dictionary<int, string> filters);
+        IEnumerable<KeySpecDTO> GetKeySpecsByProductId(int productId);
     }
 }

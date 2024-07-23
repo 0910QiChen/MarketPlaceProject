@@ -10,6 +10,7 @@ namespace DomainLayer.Interfaces
         ISubCateRepo SubCateRepo { get; }
         IAttributeRepo AttributeRepo { get; }
         IADRepo ADRepo { get; }
+        IKeySpecRepo KeySpecRepo { get; }
         void commit();
     }
 }

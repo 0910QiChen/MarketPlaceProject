@@ -14,5 +14,6 @@ namespace DomainLayer.DomainModels
         public int SubCategoryID { get; set; }
         public SubCategories SubCategory { get; set; }
         public virtual ICollection<AttributeDetails> AttributeDetails { get; set; }
+        public virtual ICollection<KeySpec> KeySpecs { get; set; }
     }
 }

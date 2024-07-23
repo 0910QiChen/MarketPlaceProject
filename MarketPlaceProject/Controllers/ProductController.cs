@@ -75,5 +75,18 @@ namespace MarketPlaceProject.Controllers
 
             return PartialView("_ProductList", filterList);
         }
+
+        [HttpGet]
+        public ActionResult KeySpecs(int productId)
+        {
+            var keySpecs = productService.GetKeySpecsByProductId(productId);
+            var keySpecViewModel = keySpecs.Select(k => new KeySpecVM
+            {
+                Key = k.Key,
+                Value = k.Value
+            }).ToList();
+
+            return View(keySpecViewModel);
+        }
     }
 }
