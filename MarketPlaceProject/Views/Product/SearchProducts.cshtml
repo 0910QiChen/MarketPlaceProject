@@ -37,7 +37,9 @@
     <div class="container">
         @Html.Partial("_FilterBar", Model)
 
-        @Html.Partial("_ProductList", Model.Products)
+        <div class="search-product-table">
+            @Html.Partial("_ProductList", Model.Products)
+        </div>
     </div>
     <script>
         $(document).ready(function () {
