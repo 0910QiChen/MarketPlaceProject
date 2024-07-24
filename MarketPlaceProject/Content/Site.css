@@ -30,8 +30,7 @@ body {
     width: 100%;
     margin: 20px auto;
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    background: #fff;
 }
 
 .header-container {
@@ -74,39 +73,6 @@ body {
     }
 
 /* Search Page */
-
-.search-container {
-    background-color: inherit;
-    padding: 10px 20px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-    .search-container select,
-    .search-container input[type="text"],
-    .search-container button {
-        margin-right: 10px;
-    }
-
-    .search-container select,
-    .search-container input[type="text"] {
-        padding: 5px;
-        font-size: 16px;
-        border: 1px solid #ccc;
-        border-radius: 4px;
-    }
-
-    .search-container button {
-        margin-left: 10px;
-        padding: 6px 10px;
-        border: none;
-        background-color: #007bff;
-        color: #fff;
-        cursor: pointer;
-        border-radius: 4px;
-    }
-
 .search-product-table {
     width: 80%;
     display: flex;
