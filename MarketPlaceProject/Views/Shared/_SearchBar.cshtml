@@ -7,37 +7,55 @@
 <div class="search-container">
     <label for="categorySelect"></label>
     <select id="categorySelect" name="categorySelect">
+        <option value=0>Category</option>
         @foreach (var category in Model)
         {
             <option value="@category.CategoryID">@category.CategoryName</option>
         }
     </select>
-    <input id="subs" name="SubCategories" placeholder="Search..." />
+
+    <input id="subs" name="SubCategories" placeholder="Search..." list="sublist">
+    <datalist id="sublist">
+    </datalist>
     <button id="searchButton">
         <img src="~/Content/icons/search.png" alt="Search" style="width: 20px; height: 20px; vertical-align: middle;" />
     </button>
 </div>
 
 <script>
-    var availableSubs = [];
     var subCategoryMap = {};
     $(function () {
         $('#categorySelect').change(function () {
-            availableSubs = [];
+            var availableSubs = [];
             var categoryID = $(this).val();
-            $.ajax({
-                url: '@Url.Action("GetCategory", "Product")',
-                data: { categoryID: categoryID },
-                success: function (data) {
-                    $.each(data, function (index, subCategory) {
-                        availableSubs.push(subCategory.name);
-                        subCategoryMap[subCategory.name] = subCategory.id;
-                    });
-                    $("#subs").autocomplete({
-                        source: availableSubs
-                    });
-                }
-            });
+            if (categoryID != 0) {
+                $.ajax({
+                    url: '@Url.Action("GetSubCategories", "Product")',
+                    data: { categoryID: categoryID },
+                    success: function (data) {
+                        $("#subs").empty();
+                        $("#sublist").empty();
+                        $.each(data, function (index, subCategory) {
+                            availableSubs.push(subCategory.name);
+                            subCategoryMap[subCategory.name] = subCategory.id;
+                            var option = $('<option></option>').attr('value', subCategory.name);
+                            $('#sublist').append(option);
+                        });
+                        $("#subs").autocomplete({
+                            source: availableSubs
+                        });
+                    }
+                });
+            }
+            else
+            {
+                subCategoryMap = {};
+                availableSubs = [];
+                $("#sublist").empty();
+                $("#subs").autocomplete({
+                    source: availableSubs
+                })
+            }
         });
         $('#categorySelect').trigger('change');
 

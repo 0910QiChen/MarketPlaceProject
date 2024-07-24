@@ -40,7 +40,7 @@ namespace MarketPlaceProject.Controllers
         }
 
         [HttpGet]
-        public JsonResult GetCategory(int categoryID)
+        public JsonResult GetSubCategories(int categoryID)
         {
             var category = productMapper.Map<CategoryVM>(productService.GetCategory(categoryID));
             var subCategories = category.SubCategories;

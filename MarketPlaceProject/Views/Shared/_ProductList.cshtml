@@ -4,7 +4,11 @@
 {
     <div class="search-product-column">
         <img src="~/Content/icons/ProductImages/@(product.ProductID).jpg" alt="@product.ProductName" class="product-image">
-        <h3>@product.ProductName</h3>
+        <h3>
+            <a href="@Url.Action("KeySpecs", "Product", new { productId = product.ProductID })">
+                @product.ProductName
+            </a>
+        </h3>
         <input type="checkbox" value="@product.ProductID" class="product-checkbox">
         @foreach (var attribute in product.SubCategory.Attributes)
         {
