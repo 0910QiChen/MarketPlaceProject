@@ -21,22 +21,29 @@
             height: 100vh;
             margin: 0;
         }
+
+        .signout-button {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+            .signout-button:hover {
+                background-color: #0056b3;
+            }
     </style>
 </head>
 
 <body>
-    <div class="logo-container">
-        <a href="@Url.Action("MainPage", "Product")">
-            <img src="~/Content/icons/logo.png" alt="Logo" class="logo">
-        </a>
-    </div>
-    <h2>
-        <b>
-            Building Product Selection Platform
-        </b>
-    </h2>
+    <button class="signout-button" onclick="window.location.href='@Url.Action("SignOut", "User")'">Sign Out</button>
+    <h2>Main Page</h2>
 
     @Html.Partial("_SearchBar", Model)
-
 </body>
 </html>
