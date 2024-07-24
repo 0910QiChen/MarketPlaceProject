@@ -2,9 +2,6 @@
 
 @{
     ViewBag.Title = "Compare Products";
-}
-
-@{
     Layout = null;
 }
 
@@ -16,13 +13,31 @@
 </head>
 
 <body>
-    <h2>Compare Products</h2>
+    <div class="header-container">
+        <div class="logo-container">
+            <a href="@Url.Action("MainPage", "Product")">
+                <img src="~/Content/icons/logo.png" alt="Logo" class="logo">
+            </a>
+        </div>
+        <div class="header-search-container">
+            @Html.Partial("_SearchBar", Model.Categories)
+        </div>
+    </div>
 
-    @Html.Partial("_SearchBar", Model.Categories)
+    <button class="back-button" onclick="goBack()">Go Back</button>
 
     <div class="compare-container">
         <table>
             <thead>
+                <tr>
+                    <th></th>
+                    @foreach (var product in Model.Products)
+                    {
+                        <th>
+                            <img src="~/Content/icons/ProductImages/@(product.ProductID).jpg" alt="@product.ProductName" class="product-image">
+                        </th>
+                    }
+                </tr>
                 <tr>
                     <th>Description</th>
                     @foreach (var product in Model.Products)
@@ -46,5 +61,11 @@
             </tbody>
         </table>
     </div>
+
+    <script>
+        function goBack() {
+            window.history.back();
+        }
+    </script>
 </body>
 </html>

@@ -6,7 +6,11 @@
 
 <div class="filter-panel">
     <h2>Filter</h2>
-
+    <div class="filter-buttons">
+        <button id="applyFilters">Apply</button>
+        <button id="resetFilters">Reset</button>
+    </div>
+    
     @foreach (var attribute in Model.SubCategory.Attributes)
     {
         switch (attribute.AttributeType)
@@ -56,9 +60,6 @@
                 break;
         }
     }
-
-    <button id="applyFilters">Apply</button>
-    <button id="resetFilters">Reset</button>
 </div>
 
 <script>

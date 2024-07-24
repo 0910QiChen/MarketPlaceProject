@@ -25,7 +25,16 @@
 </head>
 
 <body>
-    <h2>Main Page</h2>
+    <div class="logo-container">
+        <a href="@Url.Action("MainPage", "Product")">
+            <img src="~/Content/icons/logo.png" alt="Logo" class="logo">
+        </a>
+    </div>
+    <h2>
+        <b>
+            Building Product Selection Platform
+        </b>
+    </h2>
 
     @Html.Partial("_SearchBar", Model)
 

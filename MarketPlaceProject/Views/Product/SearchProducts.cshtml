@@ -14,31 +14,51 @@
 </head>
 
 <body>
-    <h2>Search Products</h2>
-    @Html.Partial("_SearchBar", Model.Categories)
-
-    <button id="compareButton">Compare</button>
-    @if (TempData["compareFailed"] != null)
-    {
-        <div id="compareFailed" class="alert alert-warning">
-            @TempData["compareFailed"]
+    <div class="header-container">
+        <div class="logo-container">
+            <a href="@Url.Action("MainPage", "Product")">
+                <img src="~/Content/icons/logo.png" alt="Logo" class="logo">
+            </a>
         </div>
-    }
+        <div class="header-search-container">
+            @Html.Partial("_SearchBar", Model.Categories)
+        </div>
+    </div>
+
+    <button class="back-button" onclick="goBack()">Go Back</button>
+
+    <div class="compare-button-container">
+        <button id="compareButton" class="compare-button">Compare</button>
+    </div>
+
+    <div class="compare-warning-container">
+        @if (TempData["compareFailed"] != null)
+        {
+            <div id="compare-failed">
+                @TempData["compareFailed"]
+            </div>
+        }
+    </div>
+
     <div class="container">
         @Html.Partial("_FilterBar", Model)
 
         @Html.Partial("_ProductList", Model.Products)
     </div>
+    <script>
+        $(document).ready(function () {
+            var messageDiv = $('#compare-failed');
+            if (messageDiv.text().trim().length > 0) {
+                messageDiv.show();
+                setTimeout(function () {
+                    messageDiv.fadeOut('slow');
+                }, 5000);
+            }
+        });
+
+        function goBack() {
+            window.history.back();
+        }
+    </script>
 </body>
 </html>
-
-<script>
-    $(document).ready(function () {
-        var messageDiv = $('#compareFailed');
-        if (messageDiv.text().trim().length > 0) {
-            messageDiv.show();
-            setTimeout(function () {
-                messageDiv.fadeOut('slow');
-            }, 5000);
-        }
-    });</script>
