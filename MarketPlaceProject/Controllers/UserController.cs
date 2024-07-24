@@ -54,6 +54,7 @@ namespace MarketPlaceProject.Controllers
 
 
 
+        [AllowAnonymous]
         public ActionResult Login()
         {
             return View();
@@ -74,6 +75,12 @@ namespace MarketPlaceProject.Controllers
                 ModelState.AddModelError("", "Invalid email or password.");
             }
             return View(model);
+        }
+
+        public ActionResult SignOut()
+        {
+            FormsAuthentication.SignOut();
+            return RedirectToAction("Login");
         }
     }
 }
