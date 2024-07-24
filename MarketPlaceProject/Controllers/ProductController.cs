@@ -9,6 +9,7 @@ using System.Linq;
 
 namespace MarketPlaceProject.Controllers
 {
+    [Authorize]
     public class ProductController : Controller
     {
         public IProductService productService;
