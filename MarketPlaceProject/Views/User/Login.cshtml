@@ -1,19 +1,124 @@
 ﻿@model MarketPlaceProject.ViewModels.LoginViewModel
 
 @{
+    Layout = null;
+}
+
+@{
     ViewBag.Title = "Login";
 }
 
 <a href="@Url.Action("Signup", "User")" class="sign-up-button">Sign Up</a>
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+<style>
+    body {
+        background: linear-gradient(to bottom, #1a73e8, #fff);
+        font-family: 'Arial', sans-serif;
+        color: #333;
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+
+    .sign-up-button {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        color: #fff;
+        text-decoration: none;
+        font-size: 25px;
+    }
+
+    /* Style for the login container */
+    .login-container {
+        width: 100%;
+        max-width: 400px;
+        padding: 20px;
+        border-radius: 10px;
+        text-align: center;
+    }
+
+    /* Style for the logo */
+    .login-logo {
+        width: 150px;
+        height: auto;
+        margin-bottom: 20px;
+    }
+
+    /* Style for the heading */
+    .login-container h2 {
+        font-size: 18px;
+        margin-bottom: 20px;
+        color: #333;
+    }
+
+    /* Style for form groups */
+    .form-group1 {
+        margin-bottom: 20px;
+        position: relative;
+    }
+
+        .form-group1 i {
+            position: absolute;
+            left: 10px;
+            top: 10px;
+            color: #999;
+        }
+
+    /* Style for form controls */
+    .form-control {
+        width: calc(90% - 20px);
+        padding: 10px 10px 10px 30px;
+        font-size: 14px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+
+    /* Style for validation messages */
+    .text-danger {
+        color: #d9534f;
+        font-size: 12px;
+        text-align: left;
+        margin-top: 5px;
+    }
+
+    /* Style for the submit button */
+    .btn-primary {
+        width: 100%;
+        padding: 10px;
+        background: #337ab7;
+        border: none;
+        border-radius: 5px;
+        color: #fff;
+        font-size: 16px;
+        cursor: pointer;
+        transition: background 0.3s ease;
+    }
+
+        .btn-primary:hover {
+            background: #286090;
+        }
+
+    a {
+        color: inherit;
+        text-decoration: none;
+    }
+</style>
+
 <div class="login-container">
     <img src="~/Content/icons/login.png" alt="Joole Logo" class="login-logo" />
+
     <h2>Building Product Selection Platform</h2>
 
     @using (Html.BeginForm("Login", "User", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
     {
         @Html.AntiForgeryToken()
-
 
         <div class="form-group1">
             <i class="fa fa-user"></i>

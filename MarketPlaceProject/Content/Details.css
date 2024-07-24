@@ -1,0 +1,63 @@
+﻿/* ~/Content/Site.css */
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+h2 {
+    color: #0076d6;
+    font-size: 24px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.keyspec-details {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin: 20px auto;
+    max-width: 800px;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+    .keyspec-details ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .keyspec-details li {
+        border-bottom: 1px solid #eee;
+        padding: 10px 0;
+        display: flex;
+        justify-content: space-between;
+    }
+
+        .keyspec-details li:last-child {
+            border-bottom: none;
+        }
+
+    .keyspec-details strong {
+        color: #333;
+        font-weight: bold;
+    }
+
+    .keyspec-details span {
+        color: #666;
+    }
+
+@media (max-width: 768px) {
+    .keyspec-details {
+        padding: 15px;
+    }
+
+    h2 {
+        font-size: 20px;
+    }
+}

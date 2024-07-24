@@ -6,6 +6,9 @@ using MarketPlaceProject.ViewModels;
 using System.Collections.Generic;
 using System.Web.Mvc;
 using System.Web.Security;
+using System.IO;
+using System.Web;
+using System;
 
 namespace MarketPlaceProject.Controllers
 {
@@ -48,6 +51,8 @@ namespace MarketPlaceProject.Controllers
             }
             return View(userVM);
         }
+
+
 
         public ActionResult Login()
         {
