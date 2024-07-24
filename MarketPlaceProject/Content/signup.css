@@ -1,5 +1,5 @@
 ﻿body {
-    background: linear-gradient(to bottom, #1a73e8, #fff);
+    background: linear-gradient(to bottom, #0b385f, #7f7f7f);
     background-color: #f2f2f2;
     font-family: 'Arial', sans-serif;
     display: flex;
@@ -29,6 +29,7 @@
 .modal-title {
     margin: 0;
     font-size: 1.25em;
+    font-weight: normal;
 }
 
 .close {
@@ -39,7 +40,7 @@
 }
 
 .image-preview-label {
-    text-align: center;
+    text-align: left;
     margin-bottom: 10px;
 }
 
@@ -53,6 +54,8 @@
     border-radius: 50%;
     margin: 0 auto 15px auto;
     overflow: hidden;
+    position: relative;
+    left: -100px;
 }
 
     .image-preview img {
@@ -94,8 +97,11 @@
 
         .form-group.file-input label {
             width: 100%;
-            text-align: center;
+            text-align: left;
             margin-bottom: 10px;
+            position: relative;
+            left: 285px; 
+            font-weight: bold;
         }
 
 .modal-footer {
@@ -126,7 +132,8 @@
     position: absolute;
     top: 20px;
     right: 20px;
-    color: #fff;
+    color: black;
     text-decoration: none;
     font-size: 25px;
 }
+
