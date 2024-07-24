@@ -17,7 +17,7 @@
     <div class="header-container">
         <div class="logo-container">
             <a href="@Url.Action("MainPage", "Product")">
-                <img src="~/Content/icons/logo.png" alt="Logo" class="logo">
+                <img src="~/Content/icons/joole.png" alt="Logo" class="logo">
             </a>
         </div>
         <div class="header-search-container">
@@ -25,11 +25,7 @@
         </div>
     </div>
 
-    <button class="back-button" onclick="goBack()">Go Back</button>
 
-    <div class="compare-button-container">
-        <button id="compareButton" class="compare-button">Compare</button>
-    </div>
 
     <div class="compare-warning-container">
         @if (TempData["compareFailed"] != null)

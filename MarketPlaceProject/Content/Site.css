@@ -21,7 +21,6 @@ textarea {
 
 body {
     font-family: Arial, sans-serif;
-    background: linear-gradient(to bottom, #1a73e8, #fff);
     margin: 0;
     padding: 0;
 }
@@ -34,7 +33,7 @@ body {
 }
 
 .header-container {
-    background: linear-gradient(to bottom, #1a73e8, #fff);
+    background: linear-gradient(to bottom, #114488, #fff);
     padding: 10px 20px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     display: flex;
@@ -44,33 +43,13 @@ body {
 }
 
 .header-search-container {
-    width: 90%;
-    background: linear-gradient(to bottom, #1a73e8, #fff);
+    width: 60%;
 }
 
 .logo {
     width: 100px;
     height: auto;
 }
-
-.back-button {
-    background-color: #007bff; /* Blue background */
-    color: white; /* White text */
-    border: none; /* No border */
-    padding: 10px 20px; /* Padding around text */
-    text-align: center; /* Center text */
-    text-decoration: none; /* No underline */
-    display: inline-block; /* Aligns with other inline elements */
-    font-size: 16px; /* Font size */
-    margin: 4px 2px; /* Margin around button */
-    cursor: pointer; /* Pointer cursor on hover */
-    border-radius: 5px; /* Rounded corners */
-    transition: background-color 0.3s; /* Smooth transition */
-}
-
-    .back-button:hover {
-        background-color: #0056b3; /* Darker blue on hover */
-    }
 
 /* Search Page */
 .search-product-table {
@@ -153,7 +132,6 @@ body {
 
 #applyFilters,
 #resetFilters {
-    width: 40%;
     padding: 10px;
     border: none;
     background-color: #007bff;
@@ -182,12 +160,6 @@ body {
     font-size: 16px;
 }
 
-.compare-button-container {
-    display: flex;
-    justify-content: center;
-    margin-top: 10px;
-}
-
 .compare-warning-container {
     margin: 10px;
     display: flex;
@@ -208,7 +180,13 @@ body {
     border-radius: 10px;
     overflow: hidden;
     display: flex;
+    flex-direction: column;
     background-color: #f9f9f9;
+}
+
+/* Responsive Table */
+.table-responsive {
+    overflow-x: auto;
 }
 
 table {
@@ -218,7 +196,6 @@ table {
 
 th, td {
     padding: 15px;
-    text-align: left;
 }
 
 th {
@@ -242,10 +219,6 @@ tbody tr:nth-child(even) {
     background-color: #ffffff;
 }
 
-tbody tr:first-child {
-    font-weight: bold;
-}
-
 table img {
     width: 100px;
     height: auto;
@@ -262,7 +235,7 @@ table img {
     }
 
 .compare-container thead th {
-    border-top: 2px solid #ccc;
+    border-top: 1px solid #ccc;
 }
 
 .compare-container tbody tr td:first-child {
@@ -279,10 +252,37 @@ table img {
     text-align: left;
 }
 
+/* Media Queries */
+@media (max-width: 768px) {
+    .header-container {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .header-search-container {
+        width: 100%;
+        margin-top: 10px;
+    }
+
+    .compare-container {
+        flex-direction: column;
+    }
+
+        .compare-container th,
+        .compare-container td {
+            font-size: inherit;
+        }
+
+    table img {
+        width: 80px;
+        height: auto;
+    }
+}
+
 /* Product */
 .product-image {
-    width: 125px; /* Set your desired width */
-    height: 125px; /* Set your desired height */
-    object-fit: cover; /* Ensures images fit within the specified dimensions */
-    margin-bottom: 10px; /* Adds space between the image and other elements */
+    width: 125px;
+    height: 125px;
+    object-fit: cover;
+    margin-bottom: 10px;
 }
