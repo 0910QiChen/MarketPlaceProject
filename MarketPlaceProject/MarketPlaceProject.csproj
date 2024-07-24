@@ -165,8 +165,8 @@
     <Content Include="Content\bootstrap.rtl.css" />
     <Content Include="Content\bootstrap.rtl.min.css" />
     <Content Include="Content\Details.css" />
+    <Content Include="Content\icons\joole.png" />
     <Content Include="Content\icons\login.png" />
-    <Content Include="Content\icons\logo.png" />
     <Content Include="Content\icons\ProductImages\1.jpg" />
     <Content Include="Content\icons\ProductImages\10.jpg" />
     <Content Include="Content\icons\ProductImages\11.jpg" />
