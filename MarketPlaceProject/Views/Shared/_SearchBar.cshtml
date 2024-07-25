@@ -4,6 +4,8 @@
 <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
 <script src="https://code.jquery.com/ui/1.13.3/jquery-ui.js"></script>
 
+
+
 <div class="search-container">
     <label for="categorySelect"></label>
     <select id="categorySelect" name="categorySelect">
@@ -17,8 +19,9 @@
     <input id="subs" name="SubCategories" placeholder="Search..." list="sublist">
     <datalist id="sublist">
     </datalist>
-    <button id="searchButton">
-        <img src="~/Content/icons/search.png" alt="Search" style="width: 20px; height: 20px; vertical-align: middle;" />
+    <button id="searchButton" placeholder="Search...">
+        @*<img src="~/Content/icons/search.png" alt="Search" />*@
+        @*//style="width: 35px; height: 35px;"*@
     </button>
 </div>
 
