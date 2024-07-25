@@ -10,40 +10,17 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background: linear-gradient(to bottom, #114488, #fff);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
-            margin: 0;
-        }
-
-        .signout-button {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            padding: 10px 20px;
-            background-color: #007bff;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-
-            .signout-button:hover {
-                background-color: #0056b3;
-            }
-    </style>
 </head>
 
 <body>
     <button class="signout-button" onclick="window.location.href='@Url.Action("SignOut", "User")'">Sign Out</button>
-    <h2>Main Page</h2>
-
+    @*<img src="~/Content/icons/login.png" alt="Joole Logo" class="login-logo" />
+    <h2 >Building Product Selection Platform</h2>*@
+<div class="Partial-part">
+    <img src="~/Content/icons/login.png" alt="Joole Logo" class="login-logo" />
+    <h2>Building Product Selection Platform</h2>
     @Html.Partial("_SearchBar", Model)
+
+</div>
 </body>
 </html>

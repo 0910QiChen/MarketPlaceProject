@@ -22,12 +22,63 @@ textarea {
 body {
     font-family: Arial, sans-serif;
     margin: 0;
+    background: linear-gradient(to bottom, #114488, #fff);
+    height: 100vh;
+/*    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;*/
+
+}
+
+.Partial-part {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 60vh;
+}
+
+.header-2 {
+    align-items: center;
+    justify-content: center;
+}
+/*
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(to bottom, #114488, #fff);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
     padding: 0;
+}*/
+.signout-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+   
+.signout-button:hover {     
+    background-color: #0056b3;
+}
+.compare-warning-container {
+    display: none !important;
 }
 
 .container {
     width: 100%;
-    margin: 20px auto;
+    margin: 0px auto;
     display: flex;
     background: #fff;
 }
@@ -39,7 +90,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin-bottom: 20px;
+    margin-bottom: 0px;
 }
 
 .header-search-container {
@@ -60,16 +111,45 @@ body {
     overflow: auto;
 }
 
-#categorySelect,
+#searchButton {
+    background-image: url('/Content/icons/search.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    border: none; /* Remove border if you want */
+    width: 45px; /* Adjust as needed */
+    height: 45px; /* Adjust as needed */
+    margin-left: -6px;
+    text-align: center; /* Center text */
+    padding: -10px;
+    /*background-color: #2596be;*/
+    color: white;
+    border-radius: 5px;
+}
+/*#categorySelect,
 #subs {
     padding: 10px;
     border-radius: 5px;
     font-size: 16px;
     width: 200px;
-}
-
+}*/
 #categorySelect {
     background-color: #0080d4;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 16px;
+    width: 210px;
+}
+
+#subs {
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 16px;
+    width: 281px;
+    margin-left: -10px;
+}
+
+option {
+    background-color: white !important;
 }
 
 .search-product-table {
@@ -305,4 +385,59 @@ table img {
     height: 125px;
     object-fit: cover;
     margin-bottom: 10px;
+}
+
+h2 {
+    color: black;
+    font-size: 26px; /* Slightly larger font size for better emphasis */
+    margin-bottom: 20px;
+    text-align: center;
+    font-weight: 600; /* Slightly heavier font weight for emphasis */
+}
+
+.keyspec-details {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 12px; /* More rounded corners for a modern look */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Softer shadow for a subtle 3D effect */
+    margin: 20px auto;
+    max-width: 800px;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+    .keyspec-details ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .keyspec-details li {
+        border-bottom: 1px solid #eee;
+        padding: 15px 0; /* Increased padding for better spacing */
+        display: flex;
+        justify-content: space-between;
+    }
+
+        .keyspec-details li:last-child {
+            border-bottom: none;
+        }
+
+    .keyspec-details strong {
+        color: #333;
+        font-weight: 600; /* Heavier font weight for stronger emphasis */
+    }
+
+    .keyspec-details span {
+        color: #555; /* Darker color for better readability */
+    }
+
+@media (max-width: 768px) {
+    .keyspec-details {
+        padding: 15px;
+    }
+
+    h2 {
+        font-size: 22px; /* Slightly smaller font size on smaller screens */
+    }
 }
