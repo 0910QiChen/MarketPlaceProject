@@ -9,7 +9,7 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/Site.css?version=1" rel="stylesheet" type="text/css" />
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 
@@ -25,14 +25,12 @@
         </div>
     </div>
 
-    <div class="compare-warning-container">
-        @if (TempData["compareFailed"] != null)
-        {
-            <div id="compare-failed">
-                @TempData["compareFailed"]
-            </div>
-        }
-    </div>
+    @if (TempData["compareFailed"] != null)
+    {
+        <div id="compare-failed">
+            @TempData["compareFailed"]
+        </div>
+    }
 
     <div class="container">
         @Html.Partial("_FilterBar", Model)

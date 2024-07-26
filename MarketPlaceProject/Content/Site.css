@@ -44,6 +44,7 @@ body {
     align-items: center;
     justify-content: center;
 }
+
 /*
 body {
     font-family: Arial, sans-serif;
@@ -56,6 +57,7 @@ body {
     margin: 0;
     padding: 0;
 }*/
+
 .signout-button {
     position: absolute;
     top: 10px;
@@ -67,13 +69,9 @@ body {
     border-radius: 5px;
     cursor: pointer;
 }
-
    
 .signout-button:hover {     
     background-color: #0056b3;
-}
-.compare-warning-container {
-    display: none !important;
 }
 
 .container {
@@ -94,7 +92,7 @@ body {
 }
 
 .header-search-container {
-    width: 60%;
+    width: 65%;
 }
 
 .logo {
@@ -108,7 +106,6 @@ body {
     align-items: center;
     gap: 10px;
     max-width: 100%;
-    overflow: auto;
 }
 
 #searchButton {
@@ -118,34 +115,26 @@ body {
     border: none; /* Remove border if you want */
     width: 45px; /* Adjust as needed */
     height: 45px; /* Adjust as needed */
-    margin-left: -6px;
     text-align: center; /* Center text */
     padding: -10px;
     /*background-color: #2596be;*/
     color: white;
     border-radius: 5px;
 }
-/*#categorySelect,
-#subs {
-    padding: 10px;
-    border-radius: 5px;
-    font-size: 16px;
-    width: 200px;
-}*/
+
 #categorySelect {
     background-color: #0080d4;
     padding: 10px;
     border-radius: 5px;
     font-size: 16px;
-    width: 210px;
+    width: 15%;
 }
 
 #subs {
     padding: 10px;
     border-radius: 5px;
     font-size: 16px;
-    width: 281px;
-    margin-left: -10px;
+    width: 85%;
 }
 
 option {
@@ -204,7 +193,9 @@ option {
 
 .filter-buttons {
     display: flex;
-    justify-content: left;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    gap: 10px; /* Add some gap between buttons */
     margin-bottom: 20px;
 }
 
@@ -260,16 +251,13 @@ option {
     font-size: 16px;
 }
 
-.compare-warning-container {
+#compare-failed {
     margin: 10px;
     display: flex;
     justify-content: center;
     background-color: #fcf8e3;
     border-color: #faebcc;
     color: #8a6d3b;
-}
-
-#compare-failed {
     font-size: 24px;
 }
 
@@ -295,7 +283,8 @@ table {
 }
 
 th, td {
-    padding: 15px;
+    padding: 1rem; /* Use relative units for padding */
+    font-size: 1rem; /* Default font size using relative units */
 }
 
 th {
@@ -320,7 +309,7 @@ tbody tr:nth-child(even) {
 }
 
 table img {
-    width: 100px;
+    max-width: 100%; /* Image resizes based on table cell width */
     height: auto;
 }
 
@@ -348,11 +337,24 @@ table img {
 }
 
 .compare-container thead th:first-child {
-    width: 200px;
+    width: 15%; /* Use percentage for width */
     text-align: left;
 }
 
 /* Media Queries */
+/* For medium screens (1024px and below) */
+@media (max-width: 1024px) {
+    .compare-container th, .compare-container td {
+        padding: 0.75rem; /* Adjust padding */
+        font-size: 0.9rem; /* Adjust font size */
+    }
+    .search-container {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
+
+/* For small screens (768px and below) */
 @media (max-width: 768px) {
     .header-container {
         flex-direction: column;
@@ -364,18 +366,33 @@ table img {
         margin-top: 10px;
     }
 
+    .search-container {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 5px;
+    }
+
     .compare-container {
         flex-direction: column;
     }
 
         .compare-container th,
         .compare-container td {
-            font-size: inherit;
+            padding: 0.5rem; /* Adjust padding */
+            font-size: 0.8rem; /* Adjust font size */
         }
+}
 
-    table img {
-        width: 80px;
-        height: auto;
+/* For very small screens (480px and below) */
+@media (max-width: 480px) {
+    .compare-container th, .compare-container td {
+        padding: 0.25rem; /* Adjust padding */
+        font-size: 0.7rem; /* Adjust font size */
+    }
+    .search-container {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 5px;
     }
 }
 

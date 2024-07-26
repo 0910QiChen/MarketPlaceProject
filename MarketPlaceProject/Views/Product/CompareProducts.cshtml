@@ -9,7 +9,7 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/Site.css?version=1" rel="stylesheet" type="text/css" />
 </head>
 
 <body>
@@ -19,47 +19,45 @@
                 <img src="~/Content/icons/login.png" alt="Logo" class="logo">
             </a>
         </div>
-        @*<div class="header-search-container">
+        <div class="header-search-container">
             @Html.Partial("_SearchBar", Model.Categories)
-        </div>*@
+        </div>
     </div>
 
     <div class="compare-container">
-        <div class="table-responsive">
-            <table>
-                <thead>
-                    <tr>
-                        <th></th>
-                        @foreach (var product in Model.Products)
-                        {
-                            <th>
-                                <img src="~/Content/icons/ProductImages/@(product.ProductID).jpg" alt="@product.ProductName" class="product-image">
-                            </th>
-                        }
-                    </tr>
-                    <tr>
-                        <th>Description</th>
-                        @foreach (var product in Model.Products)
-                        {
-                            <th>@product.ProductName</th>
-                        }
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach (var attribute in Model.SubCategory.Attributes)
+        <table>
+            <thead>
+                <tr>
+                    <th></th>
+                    @foreach (var product in Model.Products)
                     {
-                        <tr>
-                            <td>@attribute.AttributeName</td>
-                            @foreach (var product in Model.Products)
-                            {
-                                var detail = attribute.AttributeDetails.FirstOrDefault(ad => ad.ProductID == product.ProductID).Details;
-                                <td>@detail</td>
-                            }
-                        </tr>
+                        <th>
+                            <img src="~/Content/icons/ProductImages/@(product.ProductID).jpg" alt="@product.ProductName" class="product-image">
+                        </th>
                     }
-                </tbody>
-            </table>
-        </div>
+                </tr>
+                <tr>
+                    <th>Description</th>
+                    @foreach (var product in Model.Products)
+                    {
+                        <th>@product.ProductName</th>
+                    }
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var attribute in Model.SubCategory.Attributes)
+                {
+                    <tr>
+                        <td>@attribute.AttributeName</td>
+                        @foreach (var product in Model.Products)
+                        {
+                            var detail = attribute.AttributeDetails.FirstOrDefault(ad => ad.ProductID == product.ProductID).Details;
+                            <td>@detail</td>
+                        }
+                    </tr>
+                }
+            </tbody>
+        </table>
     </div>
 </body>
 </html>
